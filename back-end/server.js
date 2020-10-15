@@ -1,13 +1,22 @@
 const express = require('express');
 const axios = require('axios');
+const bodyParser = require('body-parser')
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 
-const port = 3000;
+const port = 4000;
 const app = express();
+const jsonParser = bodyParser.json()
 
-app.post('/compound', async function (req, res) {
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+app.post('/compound', jsonParser, async function (req, res) {
+  console.log("POST /Compound received");
   const address = req.body.id;
+  console.log("- addr : " + address);
   const resultat = await compound(address);
   const response = tokenList(resultat);
+  console.log(response);
   return res.send(response);
 })
 
