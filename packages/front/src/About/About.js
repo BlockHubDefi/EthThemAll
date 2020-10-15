@@ -1,12 +1,5 @@
 import React from 'react';
-import { Form, Input, Button, Checkbox } from 'antd';
-
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import './About.css';
 
 function About() {
     return (

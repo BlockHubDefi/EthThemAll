@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import 'antd/dist/antd.css';
 import './mainLayout.css';
 import { Layout, Menu, Breadcrumb, Button } from 'antd';
@@ -8,7 +8,7 @@ import {
     PieChartOutlined
 } from '@ant-design/icons';
 import { Link } from "react-router-dom";
-import Web3 from "web3";
+import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -16,30 +16,35 @@ const { SubMenu } = Menu;
 
 function MainLayout(props) {
     const [collapsed, setCollapsed] = useState(false);
+    const [web3connected, setWeb3connected] = useState(false);
+    const [walletAddress, setWalletAddress] = useState('0x0000');
 
     const onCollapse = collapsed => {
         setCollapsed(collapsed);
     };
 
     const loadWeb3Provider = async () => {
-        console.log('Connecting to provider.....');
-        const providerOptions = {
-        };
-        const web3Modal = new Web3Modal({
-            network: 'mainnet', // optional
-            // network: 'ropsten', // optional
-            cacheProvider: true, // optional
-            providerOptions
-        });
-        const provider = await web3Modal.connect();
-        // If you want to use web3, uncomment this: web3 = new Web3(provider);
-        const provider_ = new Web3(provider);
-        console.log(provider);
-        const signer = provider_.getSigner();
-        const balance = await provider_.getBalance(await signer.getAddress());
-        console.log('.... connected');
-        console.log(balance);
-        //console.log(provider_);
+        try {
+            if (web3connected) return;
+
+            const providerOptions = {
+            };
+            const web3Modal = new Web3Modal({
+                // network: 'mainnet', // optional
+                network: 'https://localhost:7545', // optional
+                cacheProvider: true, // optional
+                providerOptions
+            });
+            const provider = await web3Modal.connect();
+            const provider_ = new ethers.providers.Web3Provider(provider);
+            const signer = provider_.getSigner();
+            const addr = await signer.getAddress();
+            //const balance = await provider_.getBalance(addr);
+            setWeb3connected(true);
+            setWalletAddress(addr.substr(0,6) + '...' + addr.substr(addr.length-4,4));
+        } catch (error) {
+            console.error(error);  
+        }
     };
 
     return (
@@ -66,12 +71,12 @@ function MainLayout(props) {
                 </Sider>
                 <Layout className="site-layout">
                     <Header className="site-layout-background" style={{ padding: 0 }}>
-                       <Row>
+                        <Row>
                             <Col span={6} offset={20}>
-                                <Button type="primary" onClick={loadWeb3Provider} >Connect wallet</Button>
+    <Button type="primary" onClick={loadWeb3Provider} >{web3connected ? walletAddress : 'Connect wallet'}</Button>
                             </Col>
-                       </Row>
-                        
+                        </Row>
+
                     </Header>
                     <Content style={{ margin: '0 16px' }}>
                         <Breadcrumb style={{ margin: '16px 0' }}>

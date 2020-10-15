@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import Dashboard from './Dashboard/Dashboard.js';
 import About from './About/About.js';
@@ -10,7 +10,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import MainLayout from './MainLayout';
+import MainLayout from './Containers/MainLayout';
 
 
 function App() {
