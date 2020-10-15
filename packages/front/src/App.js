@@ -1,51 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
-import MyPage from './MyPage/MyPage.js';
-import Public from './Public/Public.js';
+import Dashboard from './Dashboard/Dashboard.js';
 import About from './About/About.js';
+import LandingPage from "./LandingPage/LandingPage";
+import Underconstruction from './Underconstruction';
 
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
+import MainLayout from './MainLayout';
+
 
 function App() {
+
   return (
-    <div>
-      <Router>
-          <div>
-          <header>
-            <ul>
-              <li>
-                <Link to="/MyPage">MyPage</Link>
-              </li>
-              <li>
-                <Link to="/Public">Public</Link>
-              </li>
-              <li>
-                <Link to="/About">About</Link>
-              </li>
-            </ul>
-            </header>
-            <hr />
-            <Switch>
-              <Route exact path="/MyPage">
-                <MyPage />
-              </Route>
-              <Route exact path="/Public">
-                <Public />
-              </Route>
-              <Route exact path="/About">
-                <About />
-              </Route>
-            </Switch>
-          </div>
-        </Router>
-    </div>
-  );
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <LandingPage />
+        </Route>
+        <Route exact path="/dashboard">
+          <MainLayout>
+            <Dashboard />
+          </MainLayout>
+        </Route>
+        <Route exact path="/about">
+          <MainLayout>
+            <About />
+          </MainLayout>
+        </Route>
+        <Route exact path="/project/compound">
+          <MainLayout>
+            <Underconstruction />
+          </MainLayout>
+        </Route>
+        <Route exact path="/project/uniswap">
+          <MainLayout>
+            <Underconstruction />
+          </MainLayout>
+        </Route>
+      </Switch>
+    </Router>);
 }
 
 export default App;
