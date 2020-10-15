@@ -4,13 +4,14 @@ const axios = require('axios');
 const port = 3000;
 const app = express();
 
-app.post('/compound', function (req, res) {
+app.post('/compound', async function (req, res) {
   const address = req.body.id;
-  const resultat = compound(address);
+  const resultat = await compound(address);
   const response = tokenList(resultat);
-  res.send(response);
+  return res.send(response);
 })
 
+// this is a test function to use like a post request
 const testCompound = async () => {
   const address = "0x00000000af5a61acaf76190794e3fdf1289288a1";
   const resultat = await compound(address);
