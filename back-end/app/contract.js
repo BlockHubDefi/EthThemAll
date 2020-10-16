@@ -5,9 +5,7 @@ const signer = provider.getSigner()
 
 const badgeMinterAddress = "eththemall.eth";
 
-const badgeMinterAbi = [
-
-]
+const badgeMinterAbi = require('../ABI/badgeMinter.json');
 
 const badgeMinterContract = new ethers.Contract(badgeMinterAddress, badgeMinterAbi, provider);
 const badgeMinterWithSigner = contract.connect(signer);
