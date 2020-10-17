@@ -1,7 +1,7 @@
 const axios = require('axios');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 
-const jsonParser = bodyParser.json()
+const jsonParser = bodyParser.json();
 
 const compound = async (req, res) => {
     jsonParser(req);
@@ -12,28 +12,28 @@ const compound = async (req, res) => {
     const response = compoundTokenList(result);
     console.log(response);
     return res.send(response);
-}  
+}
 
 const compoundTokenList = (result) => {
-const data = result.data.data.account.tokens;
-const list = [];
-for (x = 0; x < data.length; x++) {
-    if (data[x].lifetimeSupplyInterestAccrued > 0 || data[x].lifetimeBorrowInterestAccrued > 0) {
-    list[x] = [data[x].symbol, true];
-    } else {
-    list[x] = [data[x].symbol, false];
+    const data = result.data.data.account.tokens;
+    const list = [];
+    for (x = 0; x < data.length; x++) {
+        if (data[x].lifetimeSupplyInterestAccrued > 0 || data[x].lifetimeBorrowInterestAccrued > 0) {
+            list[x] = [data[x].symbol, true];
+        } else {
+            list[x] = [data[x].symbol, false];
+        }
     }
+    return list;
 }
-return list;
-}
-  
+
 const theGraphCompound = async (address) => {
-try {
-    const result = await axios.post(
-    'https://api.thegraph.com/subgraphs/name/graphprotocol/compound-v2',
-    {
-        query: `{
-        account(id: "`+ address +`") {
+    try {
+        const result = await axios.post(
+            'https://api.thegraph.com/subgraphs/name/graphprotocol/compound-v2',
+            {
+                query: `{
+        account(id: "`+ address + `") {
             id
             tokens(first: 10) {
             id
@@ -49,13 +49,13 @@ try {
             }
         }
         }`
+            }
+        );
+        return result;
+    } catch (error) {
+        console.log(error);
+        return;
     }
-    );
-    return result;
-} catch(error) {
-    console.log(error);
-    return;
-}
 }
 
 // test function
@@ -67,7 +67,7 @@ const testCompound = async () => {
     return response;
 }
 
-  module.exports = {
-      compound,
-      testCompound
-  }
+module.exports = {
+    compound,
+    testCompound
+}
