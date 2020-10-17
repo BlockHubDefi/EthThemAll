@@ -14,5 +14,9 @@
 }
 
 .ant-row {
-    min-height: 280px;
+    min-height: 360px;
+}
+
+#projects-row {
+    min-height: 0;
 }
