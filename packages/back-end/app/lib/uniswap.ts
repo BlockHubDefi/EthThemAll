@@ -1,21 +1,28 @@
-const { queryTheGraph } = require('./graph.js');
+import { queryTheGraph } from './graph';
 const log = console.log;
 
 // If the user has a Chad position inside a liquidity pool (more than 50%)
-const isEligibleForLiquidityBadgeChad = async (req, res) => {
+export const isEligibleForLiquidityBadgeChad = async (req: any, res: any) => {
   const userAddress = req.body.userAddress;
   const eligible = await verifyUserLiquidityPosition(userAddress, true);
   return res.send(eligible);
 }
 
 // If the user has a Virgin position inside a liquidity pool (less than 0.01%)
-const isEligibleForLiquidityBadgeVirgin = async (req, res) => {
+export const isEligibleForLiquidityBadgeVirgin = async (req: any, res: any) => {
   const userAddress = req.body.userAddress;
   const eligible = await verifyUserLiquidityPosition(userAddress, false);
   return res.send(eligible);
 }
 
-const verifyUserLiquidityPosition = async (userAddress, isChad) => {
+// If the user has provided liquidity to more than 50 different pools
+export const isEligibleForLiquidityCollector = async (req: any, res: any) => {
+  const userAddress = req.body.userAddress;
+  const eligible = await verifyUserLiquidityCollection(userAddress);
+  return res.send(eligible);
+}
+
+const verifyUserLiquidityPosition = async (userAddress: string, isChad: boolean) => {
   const subgraph = 'uniswap/uniswap-v2';
   const queryLiquidityPositions = `{user (id: "${userAddress}") {
         liquidityPositions {
@@ -32,8 +39,8 @@ const verifyUserLiquidityPosition = async (userAddress, isChad) => {
         }
       }}`;
   const userLiquidityPosition = await queryTheGraph(subgraph, queryLiquidityPositions);
-  // log(JSON.stringify(userLiquidityPosition));
-  userLiquidityPosition.user.liquidityPositions.forEach(async (liquidityPosition) => {
+  log(JSON.stringify(userLiquidityPosition));
+  userLiquidityPosition.user.liquidityPositions.forEach(async (liquidityPosition: any) => {
     const queryPairLiquiditySupply = `{pair (id:"${liquidityPosition.id.slice(0, userAddress.length)}"){
             totalSupply
           }}`;
@@ -52,14 +59,7 @@ const verifyUserLiquidityPosition = async (userAddress, isChad) => {
   return false;
 }
 
-// If the user has provided liquidity to more than 50 different pools
-const isEligibleForLiquidityCollector = async (req, res) => {
-  const userAddress = req.body.userAddress;
-  const eligible = await verifyUserLiquidityCollection(userAddress);
-  return res.send(eligible);
-}
-
-const verifyUserLiquidityCollection = async (userAddress) => {
+const verifyUserLiquidityCollection = async (userAddress: string) => {
   const subgraph = 'uniswap/uniswap-v2';
   const queryLiquidityPositions = `{user (id: "${userAddress}") {
       liquidityPositions {
@@ -76,7 +76,7 @@ const verifyUserLiquidityCollection = async (userAddress) => {
       }
     }}`;
   const userLiquidityPosition = await queryTheGraph(subgraph, queryLiquidityPositions);
-  // log(JSON.stringify(userLiquidityPosition));
+  log(JSON.stringify(userLiquidityPosition));
   if (userLiquidityPosition.user.liquidityPositions.length > 49) {
     // Store all the pools data inside IPFS meta-data
     // Then call smart-contract and mint badge NTNFT Liquidity pool Collector
@@ -93,9 +93,3 @@ const verifyUserLiquidityCollection = async (userAddress) => {
 // #       }
 // #     liquidityTokenBalance
 // #   }
-
-module.exports = {
-  isEligibleForLiquidityBadgeChad,
-  isEligibleForLiquidityBadgeVirgin,
-  isEligibleForLiquidityCollector
-}

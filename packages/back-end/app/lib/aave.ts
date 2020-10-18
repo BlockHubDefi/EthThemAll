@@ -1,13 +1,21 @@
-const { queryTheGraph } = require('./graph.js');
+import { queryTheGraph } from './graph';
 const log = console.log;
 
-const isEligibleForSwapFrenzy = async (req, res) => {
+// If the user swaps more than 100 times on Aave
+export const isEligibleForSwapFrenzy = async (req: any, res: any) => {
   const userAddress = req.body.userAddress;
   const eligible = await verifyUserSwapHistory(userAddress);
   return res.send(eligible);
 }
 
-const verifyUserSwapHistory = async (userAddress) => {
+// If the user got liquididated at least once on Aave (can add more)
+export const isEligibleForLiquidationWojak = async (req: any, res: any) => {
+  const userAddress = req.body.userAddress;
+  const eligible = await verifyUserLiquidationHistory(userAddress);
+  return res.send(eligible);
+}
+
+const verifyUserSwapHistory = async (userAddress: string) => {
   const subgraph = 'aave/protocol';
   const querySwapHistory = `{ user(id: "${userAddress}")
           {
@@ -26,13 +34,7 @@ const verifyUserSwapHistory = async (userAddress) => {
   return false;
 }
 
-const isEligibleForLiquidationWojak = async (req, res) => {
-  const userAddress = req.body.userAddress;
-  const eligible = await verifyUserLiquidationHistory(userAddress);
-  return res.send(eligible);
-}
-
-const verifyUserLiquidationHistory = async (userAddress) => {
+const verifyUserLiquidationHistory = async (userAddress: string) => {
   const subgraph = 'aave/protocol';
   const queryLiquidationHistory = `{
         user(id: "${userAddress}"){
@@ -48,9 +50,4 @@ const verifyUserLiquidationHistory = async (userAddress) => {
     return true;
   }
   return false;
-}
-
-module.exports = {
-  isEligibleForSwapFrenzy,
-  isEligibleForLiquidationWojak
 }

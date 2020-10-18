@@ -1,25 +1,20 @@
-const express = require('express');
+import express from 'express';
 const port = 3001;
 const app = express();
 app.use(express.json());
 
 const log = console.log;
 
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
-
-const {
+import {
   isEligibleForLiquidityBadgeChad,
   isEligibleForLiquidityBadgeVirgin,
   isEligibleForLiquidityCollector
-} = require('./lib/uniswap.js');
+} from './lib/uniswap';
 
-const {
+import {
   isEligibleForSwapFrenzy,
   isEligibleForLiquidationWojak
-} = require('./lib/aave.js');
-
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+} from './lib/aave';
 
 // const { compound, testCompound } = require('./compound.js');
 // app.post('/compound', compound);

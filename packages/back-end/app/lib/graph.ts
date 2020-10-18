@@ -1,6 +1,6 @@
-const axios = require('axios');
+import axios from 'axios';
 
-const queryTheGraph = async (subgraphName, graphQuery) => {
+export const queryTheGraph = async (subgraphName: string, graphQuery: string) => {
     try {
         const result = await axios.post(
             `https://api.thegraph.com/subgraphs/name/${subgraphName}`,
@@ -13,8 +13,4 @@ const queryTheGraph = async (subgraphName, graphQuery) => {
         console.log(error);
         return;
     }
-}
-
-module.exports = {
-    queryTheGraph
 }
