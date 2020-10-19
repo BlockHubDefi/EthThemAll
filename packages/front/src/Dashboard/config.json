@@ -1,40 +1,51 @@
 {
     "COMPOUND_BASE_IMG": "/img/compound-ph.png",
     "AAVE_BASE_IMG": "/img/aave-ph.png",
-    "NFTS_PER_PROJECT": {
-        "AAVE_NFTS": [
-            {
-                "Project": "AAVE",
-                "Title": "AAVE-SWAP",
-                "Action": "/isEligibleForSwapFrenzy",
-                "Icon": ""
-            },
-            {
-                "Project": "AAVE",
-                "Title": "AAVE-LIQUIDATION",
-                "Action": "/isEligibleForLiquidationWojak",
-                "Icon": ""
-            }
-        ],
-        "UNISWAP_NFTS": [
-            {
-                "Project": "UNISWAP",
-                "Title": "UNISWAP-CHAD",
-                "Action": "/isEligibleForLiquidityBadgeChad",
-                "Icon": ""
-            },
-            {
-                "Project": "UNISWAP",
-                "Title": "UNISWAP-VIRGIN",
-                "Action": "/isEligibleForLiquidityBadgeVirgin",
-                "Icon": ""
-            },
-            {
-                "Project": "UNISWAP",
-                "Title": "UNISWAP-COLLECTOR",
-                "Action": "/isEligibleForLiquidityCollector",
-                "Icon": ""
-            }
-        ]
-    }
+    "NFTS_PER_PROJECT": [
+        {
+            "ProjectName" : "AAVE",
+            "NFTS": [
+                {
+                    "TemplateId":"0",
+                    "Title": "AAVE-SWAP",
+                    "Action": "/isEligibleForSwapFrenzy",
+                    "Icon": "",
+                    "DefaultBadgeImg":"/img/aave-ph.png"
+                },
+                {
+                    "TemplateId":"1",
+                    "Title": "AAVE-LIQUIDATION",
+                    "Action": "/isEligibleForLiquidationWojak",
+                    "Icon": "",
+                    "DefaultBadgeImg":"/img/aave-ph.png"
+                }
+            ]
+        },
+        {
+            "ProjectName" : "UNISWAP",
+            "NFTS": [
+                {
+                    "TemplateId":"2",
+                    "Title": "UNISWAP-CHAD",
+                    "Action": "/isEligibleForLiquidityBadgeChad",
+                    "Icon": "",
+                    "DefaultBadgeImg":"/img/aave-ph.png"
+                },
+                {
+                    "TemplateId":"3",
+                    "Title": "UNISWAP-VIRGIN",
+                    "Action": "/isEligibleForLiquidityBadgeVirgin",
+                    "Icon": "",
+                    "DefaultBadgeImg":"/img/aave-ph.png"
+                },
+                {
+                    "TemplateId":"4",
+                    "Title": "UNISWAP-COLLECTOR",
+                    "Action": "/isEligibleForLiquidityCollector",
+                    "Icon": "",
+                    "DefaultBadgeImg":"/img/aave-ph.png"
+                }
+            ]
+        }
+    ]
 }
