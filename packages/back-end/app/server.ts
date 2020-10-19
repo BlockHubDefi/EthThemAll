@@ -17,7 +17,13 @@ import {
 
 import {
   isEligibleForSwapFrenzy,
-  isEligibleForLiquidationWojak
+  isEligibleForLiquidationWojak,
+  isEligibleForBorrowFrenzy,
+  isEligibleForBorrowFrenzy3Tokens,
+  isEligibleForBorrowFrenzy6Tokens,
+  isEligibleForDepositFrenzy,
+  isEligibleForDepositFrenzy3Tokens,
+  isEligibleForDepositFrenzy6Tokens
 } from './lib/aave';
 
 import { 
@@ -28,11 +34,17 @@ import {
 // const { compound, testCompound } = require('./compound.js');
 // app.post('/compound', compound);
 
-app.post('/isEligibleForLiquidityBadgeVirgin', isEligibleForLiquidityBadgeVirgin);
-app.post('/isEligibleForLiquidityBadgeChad', isEligibleForLiquidityBadgeChad);
-app.post('/isEligibleForLiquidityCollector', isEligibleForLiquidityCollector);
-app.post('/isEligibleForLiquidationWojak', isEligibleForLiquidationWojak);
-app.post('/isEligibleForSwapFrenzy', isEligibleForSwapFrenzy);
+app.post('/isEligibleForLiquidityBadgeVirginUniswap', isEligibleForLiquidityBadgeVirgin);
+app.post('/isEligibleForLiquidityBadgeChadUniswap', isEligibleForLiquidityBadgeChad);
+app.post('/isEligibleForLiquidityCollectorUniswap', isEligibleForLiquidityCollector);
+app.post('/isEligibleForLiquidationWojakAave', isEligibleForLiquidationWojak);
+app.post('/isEligibleForDepositFrenzy3TokensAave', isEligibleForDepositFrenzy3Tokens);
+app.post('/isEligibleForDepositFrenzy6TokensAave', isEligibleForDepositFrenzy6Tokens);
+app.post('/isEligibleForBorrowFrenzy3TokensAave', isEligibleForBorrowFrenzy3Tokens);
+app.post('/isEligibleForBorrowFrenzy6TokensAave', isEligibleForBorrowFrenzy6Tokens);
+app.post('/isEligibleForDepositFrenzyAave', isEligibleForDepositFrenzy);
+app.post('/isEligibleForBorrowFrenzyAave', isEligibleForBorrowFrenzy);
+app.post('/isEligibleForSwapFrenzyAave', isEligibleForSwapFrenzy);
 app.post('/retrieveUserNTNFTBadges', retrieveUserNTNFTBadges);
 app.post('/hasTemplateBadge', retrieveUserTemplateBadge);
 

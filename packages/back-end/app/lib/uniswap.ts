@@ -3,7 +3,7 @@ import { addToIPFS } from './ipfs';
 import { redeemBadge } from './minting';
 const log = console.log;
 
-// If the user has a Chad position inside a liquidity pool (more than 50%)
+// If the user has a Chad position inside a liquidity pool (more than 20%)
 export const isEligibleForLiquidityBadgeChad = async (req: any, res: any) => {
   const userAddress = req.body.userAddress;
   const eligible = await verifyUserLiquidityPosition(userAddress, true);
@@ -47,11 +47,11 @@ const verifyUserLiquidityPosition = async (userAddress: string, isChad: boolean)
             totalSupply
           }}`;
     const pairLiquiditySupply = await queryTheGraph(subgraph, queryPairLiquiditySupply);
-    if ((((liquidityPosition.liquidityTokenBalance / pairLiquiditySupply?.pair.totalSupply)) * 100 > 50) && (isChad)) {
+    if ((((liquidityPosition.liquidityTokenBalance / pairLiquiditySupply?.pair.totalSupply)) * 100 >= 20) && (isChad)) {
       // Store the liquidity pool data inside IPFS meta-data
       const URI = await addToIPFS({
         name: 'isEligibleForLiquidityBadgeChad',
-        description: 'The user has a Chad position inside a liquidity pool (more than 50%)',
+        description: 'The user has a Chad position inside a liquidity pool (more than 20%)',
         image: 'QmYaRBMTUBve6Uqtgwh4GhLjZzoi99mxVr1pGozSCrYThn',
         dataProof: liquidityPosition
       });      // Then call smart-contract and mint badge NTNFT Chad
@@ -61,11 +61,11 @@ const verifyUserLiquidityPosition = async (userAddress: string, isChad: boolean)
       } catch (e) { return { isEligible: false }; }
     }
     if ((
-      ((liquidityPosition.liquidityTokenBalance / pairLiquiditySupply.pair.totalSupply)) * 100 < 0.01) && (liquidityPosition.liquidityTokenBalance > 0) && (!isChad)) {
+      ((liquidityPosition.liquidityTokenBalance / pairLiquiditySupply.pair.totalSupply)) * 100 <= 0.01) && (liquidityPosition.liquidityTokenBalance > 0) && (!isChad)) {
       // Store the liquidity pool data inside IPFS meta-data
       const URI = await addToIPFS({
         name: 'isEligibleForLiquidityBadgeVirgin',
-        description: 'The user has a Virgin position inside a liquidity pool (less than 0.01%)',
+        description: 'The user has a Virgin position inside a liquidity pool (0.01% or less)',
         image: 'QmYaRBMTUBve6Uqtgwh4GhLjZzoi99mxVr1pGozSCrYThn',
         dataProof: liquidityPosition
       });
@@ -97,11 +97,11 @@ const verifyUserLiquidityCollection = async (userAddress: string) => {
     }}`;
   const userLiquidityPosition = await queryTheGraph(subgraph, queryLiquidityPositions);
   log(JSON.stringify(userLiquidityPosition));
-  if (userLiquidityPosition?.user?.liquidityPositions?.length > 49) {
+  if (userLiquidityPosition?.user?.liquidityPositions?.length > 20) {
     // Store all the pools data inside IPFS meta-data
     const URI = await addToIPFS({
       name: 'isEligibleForLiquidityCollector', 
-      description: 'The user has provided liquidity to more than 50 different pools', 
+      description: 'The user has provided liquidity to more than 20 different pools', 
       image: 'QmYaRBMTUBve6Uqtgwh4GhLjZzoi99mxVr1pGozSCrYThn', 
       dataProof: userLiquidityPosition.user.liquidityPositions 
     });
