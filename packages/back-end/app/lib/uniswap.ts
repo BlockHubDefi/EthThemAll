@@ -1,4 +1,6 @@
 import { queryTheGraph } from './graph';
+import { addToIPFS } from './ipfs';
+import { redeemBadge } from './minting';
 const log = console.log;
 
 // If the user has a Chad position inside a liquidity pool (more than 50%)
@@ -47,16 +49,34 @@ const verifyUserLiquidityPosition = async (userAddress: string, isChad: boolean)
     const pairLiquiditySupply = await queryTheGraph(subgraph, queryPairLiquiditySupply);
     if ((((liquidityPosition.liquidityTokenBalance / pairLiquiditySupply?.pair.totalSupply)) * 100 > 50) && (isChad)) {
       // Store the liquidity pool data inside IPFS meta-data
-      // Then call smart-contract and mint badge NTNFT Chad
-      return true;
+      const URI = await addToIPFS({
+        name: 'isEligibleForLiquidityBadgeChad',
+        description: 'The user has a Chad position inside a liquidity pool (more than 50%)',
+        image: 'QmYaRBMTUBve6Uqtgwh4GhLjZzoi99mxVr1pGozSCrYThn',
+        dataProof: liquidityPosition
+      });      // Then call smart-contract and mint badge NTNFT Chad
+      try {
+        const tx = await redeemBadge(userAddress, URI, 1);
+        return { isEligible: true, tx: tx };
+      } catch (e) { return { isEligible: false }; }
     }
-    if ((((liquidityPosition.liquidityTokenBalance / pairLiquiditySupply?.pair.totalSupply)) * 100 < 0.01) && (liquidityPosition.liquidityTokenBalance > 0) && (!isChad)) {
+    if ((
+      ((liquidityPosition.liquidityTokenBalance / pairLiquiditySupply.pair.totalSupply)) * 100 < 0.01) && (liquidityPosition.liquidityTokenBalance > 0) && (!isChad)) {
       // Store the liquidity pool data inside IPFS meta-data
+      const URI = await addToIPFS({
+        name: 'isEligibleForLiquidityBadgeVirgin',
+        description: 'The user has a Virgin position inside a liquidity pool (less than 0.01%)',
+        image: 'QmYaRBMTUBve6Uqtgwh4GhLjZzoi99mxVr1pGozSCrYThn',
+        dataProof: liquidityPosition
+      });
       // Then call smart-contract and mint badge NTNFT Virgin
-      return true;
+      try {
+        const tx = await redeemBadge(userAddress, URI, 1);
+        return { isEligible: true, tx: tx };
+      } catch (e) { return { isEligible: false }; }
     }
   });
-  return false;
+  return { isEligible: false };
 }
 
 const verifyUserLiquidityCollection = async (userAddress: string) => {
@@ -79,10 +99,20 @@ const verifyUserLiquidityCollection = async (userAddress: string) => {
   log(JSON.stringify(userLiquidityPosition));
   if (userLiquidityPosition?.user?.liquidityPositions?.length > 49) {
     // Store all the pools data inside IPFS meta-data
+    const URI = await addToIPFS({
+      name: 'isEligibleForLiquidityCollector', 
+      description: 'The user has provided liquidity to more than 50 different pools', 
+      image: 'QmYaRBMTUBve6Uqtgwh4GhLjZzoi99mxVr1pGozSCrYThn', 
+      dataProof: userLiquidityPosition.user.liquidityPositions 
+    });
     // Then call smart-contract and mint badge NTNFT Liquidity pool Collector
-    return true;
+    try {
+      log(URI);
+      const tx = await redeemBadge(userAddress, URI, 1);
+      return { isEligible: true, tx: tx };
+    } catch (e) { return { isEligible: false }; }
   }
-  return false;
+  return { isEligible: false };
 }
 
 // For the impermanent loss warrior, reuse that query instead of the user query:

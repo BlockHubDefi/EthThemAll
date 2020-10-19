@@ -8,6 +8,14 @@ async function main() {
     await badgeMinter.deployed();
 
     log(`BadgeMinter contract address: ${badgeMinter.address}`);
+
+    await badgeMinter.addTemplate('Aave', 'AaveBadgeTest', 'AaveBadgeTest_description', 'ipfsURI');
+    await badgeMinter.addTemplate('Uniswap', 'UniswapBadgeTest', 'UniswapBadgeTest_description', 'ipfsURI');
+    await badgeMinter.addTemplate('Compound', 'CompoundBadgeTest', 'CompoundBadgeTest_description', 'ipfsURI');
+
+    log(await badgeMinter.getTemplate(0));
+    log(await badgeMinter.getTemplate(1));
+    log(await badgeMinter.getTemplate(2));
 }
 
 main()
