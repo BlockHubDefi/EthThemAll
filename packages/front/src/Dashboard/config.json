@@ -6,19 +6,63 @@
             "ProjectName" : "AAVE",
             "NFTS": [
                 {
+                    "TemplateId":"5",
+                    "Title": "Deposit",
+                    "Action": "/isEligibleForDepositFrenzyAave",
+                    "Icon": "",
+                    "DefaultBadgeImg":"/img/aave-ph.png"
+                },
+                {
+                    "TemplateId":"5",
+                    "Title": "Borrow",
+                    "Action": "/isEligibleForBorrowFrenzyAave",
+                    "Icon": "",
+                    "DefaultBadgeImg":"/img/aave-ph.png"
+                },
+                {
                     "TemplateId":"0",
-                    "Title": "AAVE-SWAP",
-                    "Action": "/isEligibleForSwapFrenzy",
+                    "Title": "Wojak",
+                    "Action": "/isEligibleForLiquidationWojakAave",
                     "Icon": "",
                     "DefaultBadgeImg":"/img/aave-ph.png"
                 },
                 {
                     "TemplateId":"1",
-                    "Title": "AAVE-LIQUIDATION",
-                    "Action": "/isEligibleForLiquidationWojak",
+                    "Title": "Deposit 3 tokens",
+                    "Action": "/isEligibleForDepositFrenzy3TokensAave",
+                    "Icon": "",
+                    "DefaultBadgeImg":"/img/aave-ph.png"
+                },
+                {
+                    "TemplateId":"5",
+                    "Title": "Deposit 6 tokens",
+                    "Action": "/isEligibleForDepositFrenzy6TokensAave",
+                    "Icon": "",
+                    "DefaultBadgeImg":"/img/aave-ph.png"
+                },
+                {
+                    "TemplateId":"5",
+                    "Title": "Borrow 3 tokens",
+                    "Action": "/isEligibleForBorrowFrenzy3TokensAave",
                     "Icon": "",
                     "DefaultBadgeImg":"/img/aave-ph.png"
                 }
+                ,
+                {
+                    "TemplateId":"5",
+                    "Title": "Borrow 6 tokens",
+                    "Action": "/isEligibleForBorrowFrenzy6TokensAave",
+                    "Icon": "",
+                    "DefaultBadgeImg":"/img/aave-ph.png"
+                },
+                {
+                    "TemplateId":"5",
+                    "Title": "Swap",
+                    "Action": "/isEligibleForSwapFrenzyAave",
+                    "Icon": "",
+                    "DefaultBadgeImg":"/img/aave-ph.png"
+                }
+                
             ]
         },
         {
@@ -26,22 +70,22 @@
             "NFTS": [
                 {
                     "TemplateId":"2",
-                    "Title": "UNISWAP-CHAD",
-                    "Action": "/isEligibleForLiquidityBadgeChad",
+                    "Title": "Chad",
+                    "Action": "/isEligibleForLiquidityBadgeChadUniswap",
                     "Icon": "",
                     "DefaultBadgeImg":"/img/aave-ph.png"
                 },
                 {
                     "TemplateId":"3",
-                    "Title": "UNISWAP-VIRGIN",
-                    "Action": "/isEligibleForLiquidityBadgeVirgin",
+                    "Title": "Virgin",
+                    "Action": "/isEligibleForLiquidityBadgeVirginUniswap",
                     "Icon": "",
                     "DefaultBadgeImg":"/img/aave-ph.png"
                 },
                 {
                     "TemplateId":"4",
-                    "Title": "UNISWAP-COLLECTOR",
-                    "Action": "/isEligibleForLiquidityCollector",
+                    "Title": "Collector",
+                    "Action": "/isEligibleForLiquidityCollectorUniswap",
                     "Icon": "",
                     "DefaultBadgeImg":"/img/aave-ph.png"
                 }

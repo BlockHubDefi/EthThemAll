@@ -77,7 +77,9 @@ const projectList = config.NFTS_PER_PROJECT.map((project) => {
 })
 
 function Dashboard(props) {
-  ethAddr = props.ethAddr;
+  //ethAddr = '0xa0f75491720835b36edc92d06ddc468d201e9b73';
+  ethAddr = '0x3ee505ba316879d246a8fd2b3d7ee63b51b44fab';
+  //ethAddr = props.ethAddr;
   return (
     <div>
       <Tabs defaultActiveKey="1">

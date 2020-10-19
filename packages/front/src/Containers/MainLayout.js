@@ -37,6 +37,12 @@ function MainLayout(props) {
             });
             const provider = await web3Modal.connect();
             const provider_ = new ethers.providers.Web3Provider(provider);
+
+            // Subscribe to accounts change
+            provider.on("accountsChanged", (accounts) => {
+                setWalletAddress(accounts[0]);
+            });
+
             const signer = provider_.getSigner();
             const addr = await signer.getAddress();
             //const balance = await provider_.getBalance(addr);
