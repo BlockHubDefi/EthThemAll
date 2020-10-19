@@ -1,0 +1,40 @@
+{
+    "COMPOUND_BASE_IMG": "/img/compound-ph.png",
+    "AAVE_BASE_IMG": "/img/aave-ph.png",
+    "NFTS_PER_PROJECT": {
+        "AAVE_NFTS": [
+            {
+                "Project": "AAVE",
+                "Title": "AAVE-SWAP",
+                "Action": "/isEligibleForSwapFrenzy",
+                "Icon": ""
+            },
+            {
+                "Project": "AAVE",
+                "Title": "AAVE-LIQUIDATION",
+                "Action": "/isEligibleForLiquidationWojak",
+                "Icon": ""
+            }
+        ],
+        "UNISWAP_NFTS": [
+            {
+                "Project": "UNISWAP",
+                "Title": "UNISWAP-CHAD",
+                "Action": "/isEligibleForLiquidityBadgeChad",
+                "Icon": ""
+            },
+            {
+                "Project": "UNISWAP",
+                "Title": "UNISWAP-VIRGIN",
+                "Action": "/isEligibleForLiquidityBadgeVirgin",
+                "Icon": ""
+            },
+            {
+                "Project": "UNISWAP",
+                "Title": "UNISWAP-COLLECTOR",
+                "Action": "/isEligibleForLiquidityCollector",
+                "Icon": ""
+            }
+        ]
+    }
+}

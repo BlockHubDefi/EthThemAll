@@ -18,7 +18,6 @@ function MainLayout(props) {
     const [collapsed, setCollapsed] = useState(false);
     const [web3connected, setWeb3connected] = useState(false);
     const [walletAddress, setWalletAddress] = useState('0x0000');
-    const [displayWalletAddress, setDisplayWalletAddress] = useState('0x0000');
 
     const onCollapse = collapsed => {
         setCollapsed(collapsed);
@@ -43,7 +42,6 @@ function MainLayout(props) {
             //const balance = await provider_.getBalance(addr);
             setWeb3connected(true);
             setWalletAddress(addr);
-            setDisplayWalletAddress(addr.substr(0,6) + '...' + addr.substr(addr.length-4,4));
         } catch (error) {
             console.error(error);  
         }
@@ -75,7 +73,7 @@ function MainLayout(props) {
                     <Header className="site-layout-background" style={{ padding: 0 }}>
                         <Row>
                             <Col span={6} offset={20}>
-    <Button type="primary" onClick={loadWeb3Provider} >{web3connected ? displayWalletAddress : 'Connect wallet'}</Button>
+    <Button type="primary" onClick={loadWeb3Provider} >{web3connected ? walletAddress.substr(0,6) + '...' + walletAddress.substr(walletAddress.length-4,4) : 'Connect wallet'}</Button>
                             </Col>
                         </Row>
 
