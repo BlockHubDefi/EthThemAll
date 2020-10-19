@@ -26,7 +26,7 @@ const verifyUserSwapHistory = async (userAddress: string) => {
       }`;
   const swapHistory = await queryTheGraph(subgraph, querySwapHistory);
   log(JSON.stringify(swapHistory));
-  if (swapHistory.user.swapHistory.length > 100) {
+  if (swapHistory?.user?.swapHistory?.length > 100) {
     // Store the swap history data inside IPFS meta-data
     // Then call smart-contract and mint badge NTNFT Swap frenzy
     return true;
@@ -44,7 +44,7 @@ const verifyUserLiquidationHistory = async (userAddress: string) => {
       }}`;
   const liquidationHistory = await queryTheGraph(subgraph, queryLiquidationHistory);
   log(JSON.stringify(liquidationHistory));
-  if (liquidationHistory.user.liquidationCallHistory.length > 0) {
+  if (liquidationHistory?.user?.liquidationCallHistory?.length > 0) {
     // Store the liquditation history data inside IPFS meta-data
     // Then call smart-contract and mint badge NTNFT Liquidation Wojak
     return true;

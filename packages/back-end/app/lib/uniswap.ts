@@ -40,17 +40,17 @@ const verifyUserLiquidityPosition = async (userAddress: string, isChad: boolean)
       }}`;
   const userLiquidityPosition = await queryTheGraph(subgraph, queryLiquidityPositions);
   log(JSON.stringify(userLiquidityPosition));
-  userLiquidityPosition.user.liquidityPositions.forEach(async (liquidityPosition: any) => {
+  userLiquidityPosition?.user?.liquidityPositions?.forEach(async (liquidityPosition: any) => {
     const queryPairLiquiditySupply = `{pair (id:"${liquidityPosition.id.slice(0, userAddress.length)}"){
             totalSupply
           }}`;
     const pairLiquiditySupply = await queryTheGraph(subgraph, queryPairLiquiditySupply);
-    if ((((liquidityPosition.liquidityTokenBalance / pairLiquiditySupply.pair.totalSupply)) * 100 > 50) && (isChad)) {
+    if ((((liquidityPosition.liquidityTokenBalance / pairLiquiditySupply?.pair.totalSupply)) * 100 > 50) && (isChad)) {
       // Store the liquidity pool data inside IPFS meta-data
       // Then call smart-contract and mint badge NTNFT Chad
       return true;
     }
-    if ((((liquidityPosition.liquidityTokenBalance / pairLiquiditySupply.pair.totalSupply)) * 100 < 0.01) && (liquidityPosition.liquidityTokenBalance > 0) && (!isChad)) {
+    if ((((liquidityPosition.liquidityTokenBalance / pairLiquiditySupply?.pair.totalSupply)) * 100 < 0.01) && (liquidityPosition.liquidityTokenBalance > 0) && (!isChad)) {
       // Store the liquidity pool data inside IPFS meta-data
       // Then call smart-contract and mint badge NTNFT Virgin
       return true;
@@ -77,7 +77,7 @@ const verifyUserLiquidityCollection = async (userAddress: string) => {
     }}`;
   const userLiquidityPosition = await queryTheGraph(subgraph, queryLiquidityPositions);
   log(JSON.stringify(userLiquidityPosition));
-  if (userLiquidityPosition.user.liquidityPositions.length > 49) {
+  if (userLiquidityPosition?.user?.liquidityPositions?.length > 49) {
     // Store all the pools data inside IPFS meta-data
     // Then call smart-contract and mint badge NTNFT Liquidity pool Collector
     return true;
