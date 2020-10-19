@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.2.1",
     "antd": "^4.7.0",
     "axios": "^0.20.0",
+    "cryptocurrency-icons": "^0.16.1",
     "ethers": "^5.0.17",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
