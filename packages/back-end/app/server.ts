@@ -1,6 +1,8 @@
 import express from 'express';
+var cors = require('cors');
 const port = 3001;
 const app = express();
+app.use(cors());
 app.use(express.json());
 
 const log = console.log;
