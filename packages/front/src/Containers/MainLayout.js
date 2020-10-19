@@ -18,6 +18,7 @@ function MainLayout(props) {
     const [collapsed, setCollapsed] = useState(false);
     const [web3connected, setWeb3connected] = useState(false);
     const [walletAddress, setWalletAddress] = useState('0x0000');
+    const [displayWalletAddress, setDisplayWalletAddress] = useState('0x0000');
 
     const onCollapse = collapsed => {
         setCollapsed(collapsed);
@@ -41,7 +42,8 @@ function MainLayout(props) {
             const addr = await signer.getAddress();
             //const balance = await provider_.getBalance(addr);
             setWeb3connected(true);
-            setWalletAddress(addr.substr(0,6) + '...' + addr.substr(addr.length-4,4));
+            setWalletAddress(addr);
+            setDisplayWalletAddress(addr.substr(0,6) + '...' + addr.substr(addr.length-4,4));
         } catch (error) {
             console.error(error);  
         }
@@ -56,24 +58,24 @@ function MainLayout(props) {
                         <Menu.Item key="1" icon={<PieChartOutlined />} >
                             <Link to="/dashboard">Dashboard</Link>
                         </Menu.Item>
-                        <SubMenu key="sub1" icon={<DesktopOutlined />} title="Projects">
+                        {/* <SubMenu key="sub1" icon={<DesktopOutlined />} title="Projects">
                             <Menu.Item key="3">
                                 <Link to="/project/compound">Compound</Link>
                             </Menu.Item>
                             <Menu.Item key="4">
                                 <Link to="/project/uniswap">Uniswap</Link>
                             </Menu.Item>
-                        </SubMenu>
-                        <Menu.Item key="about" icon={<PieChartOutlined />} >
+                        </SubMenu> */}
+                        {/* <Menu.Item key="about" icon={<PieChartOutlined />} >
                             <Link to="/about">About</Link>
-                        </Menu.Item>
+                        </Menu.Item> */}
                     </Menu>
                 </Sider>
                 <Layout className="site-layout">
                     <Header className="site-layout-background" style={{ padding: 0 }}>
                         <Row>
                             <Col span={6} offset={20}>
-    <Button type="primary" onClick={loadWeb3Provider} >{web3connected ? walletAddress : 'Connect wallet'}</Button>
+    <Button type="primary" onClick={loadWeb3Provider} >{web3connected ? displayWalletAddress : 'Connect wallet'}</Button>
                             </Col>
                         </Row>
 
@@ -84,7 +86,7 @@ function MainLayout(props) {
                             <Breadcrumb.Item>Dashboard</Breadcrumb.Item>
                         </Breadcrumb>
                         <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-                            {props.children}
+                            {React.cloneElement(props.children, { ethAddr: walletAddress })}
                         </div>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>EthThemAll ©2020 Created for EthOnline Hackathon</Footer>

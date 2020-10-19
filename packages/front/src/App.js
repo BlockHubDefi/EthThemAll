@@ -3,7 +3,7 @@ import './App.css';
 import Dashboard from './Dashboard/Dashboard.js';
 import About from './About/About.js';
 import LandingPage from "./LandingPage/LandingPage";
-import Underconstruction from './Underconstruction';
+//import Underconstruction from './Underconstruction';
 
 import {
   BrowserRouter as Router,
@@ -31,7 +31,7 @@ function App() {
             <About />
           </MainLayout>
         </Route>
-        <Route exact path="/project/compound">
+        {/* <Route exact path="/project/compound">
           <MainLayout>
             <Underconstruction />
           </MainLayout>
@@ -40,7 +40,7 @@ function App() {
           <MainLayout>
             <Underconstruction />
           </MainLayout>
-        </Route>
+        </Route> */}
       </Switch>
     </Router>);
 }
