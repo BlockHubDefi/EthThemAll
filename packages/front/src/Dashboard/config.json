@@ -6,35 +6,35 @@
             "ProjectName" : "AAVE",
             "NFTS": [
                 {
-                    "TemplateId":"5",
+                    "TemplateId":"0",
                     "Title": "Deposit",
                     "Action": "/isEligibleForDepositFrenzyAave",
                     "Icon": "",
                     "DefaultBadgeImg":"/img/aave-ph.png"
                 },
                 {
-                    "TemplateId":"5",
+                    "TemplateId":"1",
                     "Title": "Borrow",
                     "Action": "/isEligibleForBorrowFrenzyAave",
                     "Icon": "",
                     "DefaultBadgeImg":"/img/aave-ph.png"
                 },
                 {
-                    "TemplateId":"0",
+                    "TemplateId":"2",
                     "Title": "Wojak",
                     "Action": "/isEligibleForLiquidationWojakAave",
                     "Icon": "",
                     "DefaultBadgeImg":"/img/aave-ph.png"
                 },
                 {
-                    "TemplateId":"1",
+                    "TemplateId":"3",
                     "Title": "Deposit 3 tokens",
                     "Action": "/isEligibleForDepositFrenzy3TokensAave",
                     "Icon": "",
                     "DefaultBadgeImg":"/img/aave-ph.png"
                 },
                 {
-                    "TemplateId":"5",
+                    "TemplateId":"4",
                     "Title": "Deposit 6 tokens",
                     "Action": "/isEligibleForDepositFrenzy6TokensAave",
                     "Icon": "",
@@ -49,14 +49,14 @@
                 }
                 ,
                 {
-                    "TemplateId":"5",
+                    "TemplateId":"6",
                     "Title": "Borrow 6 tokens",
                     "Action": "/isEligibleForBorrowFrenzy6TokensAave",
                     "Icon": "",
                     "DefaultBadgeImg":"/img/aave-ph.png"
                 },
                 {
-                    "TemplateId":"5",
+                    "TemplateId":"7",
                     "Title": "Swap",
                     "Action": "/isEligibleForSwapFrenzyAave",
                     "Icon": "",
@@ -69,21 +69,21 @@
             "ProjectName" : "UNISWAP",
             "NFTS": [
                 {
-                    "TemplateId":"2",
+                    "TemplateId":"8",
                     "Title": "Chad",
                     "Action": "/isEligibleForLiquidityBadgeChadUniswap",
                     "Icon": "",
                     "DefaultBadgeImg":"/img/aave-ph.png"
                 },
                 {
-                    "TemplateId":"3",
+                    "TemplateId":"9",
                     "Title": "Virgin",
                     "Action": "/isEligibleForLiquidityBadgeVirginUniswap",
                     "Icon": "",
                     "DefaultBadgeImg":"/img/aave-ph.png"
                 },
                 {
-                    "TemplateId":"4",
+                    "TemplateId":"10",
                     "Title": "Collector",
                     "Action": "/isEligibleForLiquidityCollectorUniswap",
                     "Icon": "",
