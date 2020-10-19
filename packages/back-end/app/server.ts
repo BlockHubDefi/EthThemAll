@@ -19,7 +19,11 @@ import {
   isEligibleForSwapFrenzy,
   isEligibleForLiquidationWojak
 } from './lib/aave';
-import { retrieveUserNTNFTBadges } from './lib/NTNFT';
+
+import { 
+  retrieveUserNTNFTBadges,
+  retrieveUserTemplateBadge
+} from './lib/NTNFT';
 
 // const { compound, testCompound } = require('./compound.js');
 // app.post('/compound', compound);
@@ -27,9 +31,10 @@ import { retrieveUserNTNFTBadges } from './lib/NTNFT';
 app.post('/isEligibleForLiquidityBadgeVirgin', isEligibleForLiquidityBadgeVirgin);
 app.post('/isEligibleForLiquidityBadgeChad', isEligibleForLiquidityBadgeChad);
 app.post('/isEligibleForLiquidityCollector', isEligibleForLiquidityCollector);
-app.post('/isEligibleForSwapFrenzy', isEligibleForSwapFrenzy);
 app.post('/isEligibleForLiquidationWojak', isEligibleForLiquidationWojak);
+app.post('/isEligibleForSwapFrenzy', isEligibleForSwapFrenzy);
 app.post('/retrieveUserNTNFTBadges', retrieveUserNTNFTBadges);
+app.post('/hasTemplateBadge', retrieveUserTemplateBadge);
 
 app.listen(port, function () {
   log('Server is running on ' + port + ' port');
