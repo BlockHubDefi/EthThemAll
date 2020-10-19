@@ -19,6 +19,7 @@ import {
   isEligibleForSwapFrenzy,
   isEligibleForLiquidationWojak
 } from './lib/aave';
+import { retrieveUserNTNFTBadges } from './lib/NTNFT';
 
 // const { compound, testCompound } = require('./compound.js');
 // app.post('/compound', compound);
@@ -28,6 +29,7 @@ app.post('/isEligibleForLiquidityBadgeChad', isEligibleForLiquidityBadgeChad);
 app.post('/isEligibleForLiquidityCollector', isEligibleForLiquidityCollector);
 app.post('/isEligibleForSwapFrenzy', isEligibleForSwapFrenzy);
 app.post('/isEligibleForLiquidationWojak', isEligibleForLiquidationWojak);
+app.post('/retrieveUserNTNFTBadges', retrieveUserNTNFTBadges);
 
 app.listen(port, function () {
   log('Server is running on ' + port + ' port');

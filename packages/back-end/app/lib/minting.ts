@@ -1,6 +1,7 @@
 import { ethers, getDefaultProvider, Wallet } from 'ethers';
 // import { getInfuraProvider } from './provider';
 import BadgeMinterArtifact from './artifacts/BadgeMinter.json';
+// const log = console.log;
 
 export const redeemBadge = async (userAddress: string, URI_: string, templateId: number) => {
   const badgeMinterAddress = process.env.CONTRACT_ADDRESS || '';

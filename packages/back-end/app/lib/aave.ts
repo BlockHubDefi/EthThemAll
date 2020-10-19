@@ -39,7 +39,7 @@ const verifyUserSwapHistory = async (userAddress: string) => {
     // Then call smart-contract and mint badge NTNFT Swap frenzy
     try {
       log(URI);
-      const tx = await redeemBadge(userAddress, URI, 1);
+      const tx = await redeemBadge(userAddress, URI.path, 1);
       return { isEligible: true, tx: tx };
     } catch (e) { return { isEligible: false }; }
   }
@@ -67,7 +67,7 @@ const verifyUserLiquidationHistory = async (userAddress: string) => {
     // Then call smart-contract and mint badge NTNFT Liquidation Wojak
     try {
       log(URI);
-      const tx = await redeemBadge(userAddress, URI, 1);
+      const tx = await redeemBadge(userAddress, URI.path, 1);
       return { isEligible: true, tx: tx };
     } catch (e) { return { isEligible: false }; }
   }

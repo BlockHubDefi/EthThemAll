@@ -56,7 +56,7 @@ const verifyUserLiquidityPosition = async (userAddress: string, isChad: boolean)
         dataProof: liquidityPosition
       });      // Then call smart-contract and mint badge NTNFT Chad
       try {
-        const tx = await redeemBadge(userAddress, URI, 1);
+        const tx = await redeemBadge(userAddress, URI.path, 1);
         return { isEligible: true, tx: tx };
       } catch (e) { return { isEligible: false }; }
     }
@@ -71,7 +71,7 @@ const verifyUserLiquidityPosition = async (userAddress: string, isChad: boolean)
       });
       // Then call smart-contract and mint badge NTNFT Virgin
       try {
-        const tx = await redeemBadge(userAddress, URI, 1);
+        const tx = await redeemBadge(userAddress, URI.path, 1);
         return { isEligible: true, tx: tx };
       } catch (e) { return { isEligible: false }; }
     }
@@ -108,7 +108,7 @@ const verifyUserLiquidityCollection = async (userAddress: string) => {
     // Then call smart-contract and mint badge NTNFT Liquidity pool Collector
     try {
       log(URI);
-      const tx = await redeemBadge(userAddress, URI, 1);
+      const tx = await redeemBadge(userAddress, URI.path, 1);
       return { isEligible: true, tx: tx };
     } catch (e) { return { isEligible: false }; }
   }
