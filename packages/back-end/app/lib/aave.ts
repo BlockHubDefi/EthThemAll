@@ -10,42 +10,42 @@ export const isEligibleForSwapFrenzy = async (req: any, res: any) => {
   return res.send(eligible);
 }
 
-// If the user borrowed more than 1 times on Aave
+// If the user borrowed at least once on Aave
 export const isEligibleForBorrowFrenzy = async (req: any, res: any) => {
   const userAddress = req.body.userAddress;
   const eligible = await verifyUserBorrowHistory(userAddress);
   return res.send(eligible);
 }
 
-// If the user borrowed more than 1 times on Aave
+// If the user borrowed at least 3 different tokens on Aave
 export const isEligibleForBorrowFrenzy3Tokens = async (req: any, res: any) => {
   const userAddress = req.body.userAddress;
   const eligible = await verifyUserBorrowHistory3Tokens(userAddress);
   return res.send(eligible);
 }
 
-// If the user borrowed more than 1 times on Aave
+// If the user borrowed at least 6 different tokens on Aave
 export const isEligibleForBorrowFrenzy6Tokens = async (req: any, res: any) => {
   const userAddress = req.body.userAddress;
   const eligible = await verifyUserBorrowHistory6Tokens(userAddress);
   return res.send(eligible);
 }
 
-// If the user deposited more than 1 times on Aave
+// If the user deposited at least once on Aave
 export const isEligibleForDepositFrenzy = async (req: any, res: any) => {
   const userAddress = req.body.userAddress;
   const eligible = await verifyUserDepositHistory(userAddress);
   return res.send(eligible);
 }
 
-// If the user deposited 3 different tokens or more on Aave
+// If the user deposited at least 3 different tokens on Aave
 export const isEligibleForDepositFrenzy3Tokens = async (req: any, res: any) => {
   const userAddress = req.body.userAddress;
   const eligible = await verifyUserDepositHistory3Tokens(userAddress);
   return res.send(eligible);
 }
 
-// If the user deposited 6 different tokens or more on Aave
+// If the user deposited at least 6 different tokens on Aave
 export const isEligibleForDepositFrenzy6Tokens = async (req: any, res: any) => {
   const userAddress = req.body.userAddress;
   const eligible = await verifyUserDepositHistory6Tokens(userAddress);
@@ -75,13 +75,13 @@ const verifyUserSwapHistory = async (userAddress: string) => {
     const URI = await addToIPFS({
       name: 'isEligibleForSwapFrenzy',
       description: 'The user swaps 50 times or more on Aave',
-      image: 'QmYaRBMTUBve6Uqtgwh4GhLjZzoi99mxVr1pGozSCrYThn',
+      image: 'QmRvdvfdbR4knesJ6ianWn4w3WAiTacfqxA7f1DQd5rBJ2',
       dataProof: swapHistory.user.swapHistory
     });
     // Then call smart-contract and mint badge NTNFT Swap frenzy
     try {
       log(URI);
-      const tx = await redeemBadge(userAddress, URI.path, 1);
+      const tx = await redeemBadge(userAddress, URI.path, 0);
       return { isEligible: true, tx: tx };
     } catch (e) { return { isEligible: false }; }
   }
@@ -103,7 +103,7 @@ const verifyUserLiquidationHistory = async (userAddress: string) => {
     const URI = await addToIPFS({
       name: 'isEligibleForLiquidationWojak',
       description: 'The user got liquididated at least once on Aave',
-      image: 'QmYaRBMTUBve6Uqtgwh4GhLjZzoi99mxVr1pGozSCrYThn',
+      image: 'QmRvdvfdbR4knesJ6ianWn4w3WAiTacfqxA7f1DQd5rBJ2',
       dataProof: liquidationHistory.user.liquidationCallHistory
     });
     // Then call smart-contract and mint badge NTNFT Liquidation Wojak
@@ -134,14 +134,14 @@ const verifyUserDepositHistory = async (userAddress: string) => {
     // Store the liquditation history data inside IPFS meta-data
     const URI = await addToIPFS({
       name: 'isEligibleForDepositFrenzy',
-      description: 'The user deposited more than 1 times on Aave',
-      image: 'QmYaRBMTUBve6Uqtgwh4GhLjZzoi99mxVr1pGozSCrYThn',
+      description: 'The user deposited at least once on Aave',
+      image: 'QmQuLTyVH6AFvTwdF35X6DZXDKTiiiDnrnp9Uoimm9ZNhN',
       dataProof: depositHistory.user.depositHistory
     });
     // Then call smart-contract and mint badge NTNFT Liquidation Wojak
     try {
       log(URI);
-      const tx = await redeemBadge(userAddress, URI.path, 1);
+      const tx = await redeemBadge(userAddress, URI.path, 2);
       return { isEligible: true, tx: tx };
     } catch (e) { return { isEligible: false }; }
   }
@@ -175,14 +175,14 @@ const verifyUserDepositHistory3Tokens = async (userAddress: string) => {
       // Store the liquditation history data inside IPFS meta-data
       const URI = await addToIPFS({
         name: 'isEligibleForDepositFrenzy3',
-        description: 'The user deposited more than 3 different tokens on Aave',
-        image: 'QmYaRBMTUBve6Uqtgwh4GhLjZzoi99mxVr1pGozSCrYThn',
+        description: 'The user deposited at least 3 different tokens on Aave',
+        image: 'QmaWU2tHSdsiD8X5HUBH6w5V2qaNTpagxR6ow3haXhT46B',
         dataProof: depositHistory.user.depositHistory
       });
       // Then call smart-contract and mint badge NTNFT Liquidation Wojak
       try {
         log(URI);
-        const tx = await redeemBadge(userAddress, URI.path, 1);
+        const tx = await redeemBadge(userAddress, URI.path, 3);
         return { isEligible: true, tx: tx };
       } catch (e) { return { isEligible: false }; }
     }
@@ -217,14 +217,14 @@ const verifyUserDepositHistory6Tokens = async (userAddress: string) => {
       // Store the liquditation history data inside IPFS meta-data
       const URI = await addToIPFS({
         name: 'isEligibleForDepositFrenzy',
-        description: 'The user deposited more than 6 different tokens on Aave',
-        image: 'QmYaRBMTUBve6Uqtgwh4GhLjZzoi99mxVr1pGozSCrYThn',
+        description: 'The user deposited at least 6 different tokens on Aave',
+        image: 'QmYvUEjg1sbB4owBTMPgAZ7kF8bAnLYy6WTj17xNeaWCds',
         dataProof: depositHistory.user.depositHistory
       });
       // Then call smart-contract and mint badge NTNFT Liquidation Wojak
       try {
         log(URI);
-        const tx = await redeemBadge(userAddress, URI.path, 1);
+        const tx = await redeemBadge(userAddress, URI.path, 4);
         return { isEligible: true, tx: tx };
       } catch (e) { return { isEligible: false }; }
     }
@@ -251,14 +251,14 @@ const verifyUserBorrowHistory = async (userAddress: string) => {
     // Store the liquditation history data inside IPFS meta-data
     const URI = await addToIPFS({
       name: 'isEligibleForBorrowManiac',
-      description: 'The user borrowed more than 1 times on Aave',
-      image: 'QmYaRBMTUBve6Uqtgwh4GhLjZzoi99mxVr1pGozSCrYThn',
+      description: 'The user borrowed at least once on Aave',
+      image: 'QmWAzDXUJ7k5zW1eudPgCX5XXceL12rd3fBzNFHPExVrDW',
       dataProof: borrowHistory.user.borrowHistory
     });
     // Then call smart-contract and mint badge NTNFT Liquidation Wojak
     try {
       log(URI);
-      const tx = await redeemBadge(userAddress, URI.path, 1);
+      const tx = await redeemBadge(userAddress, URI.path, 5);
       return { isEligible: true, tx: tx };
     } catch (e) { return { isEligible: false }; }
   }
@@ -294,14 +294,14 @@ const verifyUserBorrowHistory3Tokens = async (userAddress: string) => {
       // Store the liquditation history data inside IPFS meta-data
       const URI = await addToIPFS({
         name: 'isEligibleForBorrowFrenzy3',
-        description: 'The user borrowed more than 3 different assets on Aave',
-        image: 'QmYaRBMTUBve6Uqtgwh4GhLjZzoi99mxVr1pGozSCrYThn',
+        description: 'The user borrowed at least 3 different assets on Aave',
+        image: 'QmW2ResqCup7bW3YPkVpAWCXNdz6PLRcE2yue2Ktk9eKN9',
         dataProof: borrowHistory.user.borrowHistory
       });
       // Then call smart-contract and mint badge NTNFT Liquidation Wojak
       try {
         log(URI);
-        const tx = await redeemBadge(userAddress, URI.path, 1);
+        const tx = await redeemBadge(userAddress, URI.path, 6);
         return { isEligible: true, tx: tx };
       } catch (e) { return { isEligible: false }; }
     }
@@ -336,15 +336,15 @@ const verifyUserBorrowHistory6Tokens = async (userAddress: string) => {
     if (count >= 6) {
       // Store the liquditation history data inside IPFS meta-data
       const URI = await addToIPFS({
-        name: 'isEligibleForBorrowFrenzy3',
-        description: 'The user borrowed more than 6 different assets on Aave',
-        image: 'QmYaRBMTUBve6Uqtgwh4GhLjZzoi99mxVr1pGozSCrYThn',
+        name: 'isEligibleForBorrowFrenzy6',
+        description: 'The user borrowed at least 6 different assets on Aave',
+        image: 'QmZ6EURfShQT9ZhSQ7sjzFxfd9Hx5j4NmeYzte8NSqdCPt',
         dataProof: borrowHistory.user.borrowHistory
       });
       // Then call smart-contract and mint badge NTNFT Liquidation Wojak
       try {
         log(URI);
-        const tx = await redeemBadge(userAddress, URI.path, 1);
+        const tx = await redeemBadge(userAddress, URI.path, 7);
         return { isEligible: true, tx: tx };
       } catch (e) { return { isEligible: false }; }
     }

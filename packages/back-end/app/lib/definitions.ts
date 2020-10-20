@@ -12,3 +12,5 @@ export type Template = {
     description: string,
     image: string,
 }
+
+export const UniswapWhitelisted: string[] = ['WETH', 'YFI', 'USDC', 'DAI', 'SNX', 'UNI', 'sUSD', 'CRV'];
