@@ -6,29 +6,29 @@
             "ProjectName" : "AAVE",
             "NFTS": [
                 {
-                    "TemplateId":"0",
+                    "TemplateId":"2",
                     "Title": "Deposit",
                     "Action": "/isEligibleForDepositFrenzyAave",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-supply-l1-locked.png",
+                    "IpfsLockedBadgeHash":"QmbBX9DKGTpuDhhTsnTsESEd9RLNk6Lx9WUSTuwvaYZWtG",
+                    "Minted": "false",
+                    "IpfsBadgeUri":null
+                },
+                {
+                    "TemplateId":"5",
+                    "Title": "Borrow",
+                    "Action": "/isEligibleForBorrowFrenzyAave",
+                    "Icon": "",
+                    "IpfsLockedBadgeHash":"QmeF6fMRAAURMEwgQDwbu3DNBiMPGw6NefSg2F4z9btUTy",
                     "Minted": "false",
                     "IpfsBadgeUri":null
                 },
                 {
                     "TemplateId":"1",
-                    "Title": "Borrow",
-                    "Action": "/isEligibleForBorrowFrenzyAave",
-                    "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-borrow-l1-locked.png",
-                    "Minted": "false",
-                    "IpfsBadgeUri":null
-                },
-                {
-                    "TemplateId":"2",
                     "Title": "Wojak",
                     "Action": "/isEligibleForLiquidationWojakAave",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "IpfsLockedBadgeHash":"QmRvdvfdbR4knesJ6ianWn4w3WAiTacfqxA7f1DQd5rBJ2",
                     "Minted": "false",
                     "IpfsBadgeUri":null
                 },
@@ -37,7 +37,7 @@
                     "Title": "Deposit 3+ tokens",
                     "Action": "/isEligibleForDepositFrenzy3TokensAave",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-supply-l2-locked.png",
+                    "IpfsLockedBadgeHash":"QmSyVqDZhqqojhBNKp1LUjdYTAL3idmFxmz2F3fNzdfe6p",
                     "Minted": "false",
                     "IpfsBadgeUri":null
                 },
@@ -46,68 +46,58 @@
                     "Title": "Deposit 6+ tokens",
                     "Action": "/isEligibleForDepositFrenzy6TokensAave",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-supply-l3-locked.png",
+                    "IpfsLockedBadgeHash":"QmSvzoB8SA1osqPmQc9mayPHgfpgFeNzzo6JHRxksFiFDQ",
                     "Minted": "false",
                     "IpfsBadgeUri":null
                 },
                 {
-                    "TemplateId":"5",
+                    "TemplateId":"6",
                     "Title": "Borrow 3+ tokens",
                     "Action": "/isEligibleForBorrowFrenzy3TokensAave",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-borrow-l2-locked.png",
+                    "IpfsLockedBadgeHash":"QmfBGKjc4RdBKtSY8zyqFFyfAvU34oFpshGR93EndLAB11",
                     "Minted": "false",
                     "IpfsBadgeUri":null
                 }
                 ,
                 {
-                    "TemplateId":"6",
+                    "TemplateId":"7",
                     "Title": "Borrow 6+ tokens",
                     "Action": "/isEligibleForBorrowFrenzy6TokensAave",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-borrow-l3-locked.png",
-                    "Minted": "false",
-                    "IpfsBadgeUri":null
-                },
-                {
-                    "TemplateId":"7",
-                    "Title": "Swap",
-                    "Action": "/isEligibleForSwapFrenzyAave",
-                    "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "IpfsLockedBadgeHash":"QmWDVcrMHZ8pykSb7MfoaR2o98ZPetpHZ51EXgjhjmTqPs",
                     "Minted": "false",
                     "IpfsBadgeUri":null
                 }
-                
             ]
         },
         {
             "ProjectName" : "UNISWAP",
             "NFTS": [
                 {
-                    "TemplateId":"8",
+                    "TemplateId":"10",
                     "Title": "Chad",
                     "Action": "/isEligibleForLiquidityBadgeChadUniswap",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "IpfsLockedBadgeHash":"QmRvdvfdbR4knesJ6ianWn4w3WAiTacfqxA7f1DQd5rBJ2",
                     "Minted": "false",
                     "IpfsBadgeUri":null
                 },
                 {
-                    "TemplateId":"9",
+                    "TemplateId":"8",
                     "Title": "Virgin",
                     "Action": "/isEligibleForLiquidityBadgeVirginUniswap",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "IpfsLockedBadgeHash":"QmRvdvfdbR4knesJ6ianWn4w3WAiTacfqxA7f1DQd5rBJ2",
                     "Minted": "false",
                     "IpfsBadgeUri":null
                 },
                 {
-                    "TemplateId":"10",
+                    "TemplateId":"11",
                     "Title": "Collector",
-                    "Action": "/isEligibleForLiquidityCollectorUniswap",
+                    "Action": "/isEligibleForLiquidityBadgeCollectorUniswap",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "IpfsLockedBadgeHash":"QmRvdvfdbR4knesJ6ianWn4w3WAiTacfqxA7f1DQd5rBJ2",
                     "Minted": "false",
                     "IpfsBadgeUri":null
                 }
