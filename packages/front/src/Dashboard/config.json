@@ -10,7 +10,7 @@
                     "Title": "Deposit",
                     "Action": "/isEligibleForDepositFrenzyAave",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "DefaultBadgeImg":"/img/aave-supply-l1-locked.png",
                     "Minted": "false",
                     "IpfsBadgeUri":null
                 },
@@ -19,7 +19,7 @@
                     "Title": "Borrow",
                     "Action": "/isEligibleForBorrowFrenzyAave",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "DefaultBadgeImg":"/img/aave-borrow-l1-locked.png",
                     "Minted": "false",
                     "IpfsBadgeUri":null
                 },
@@ -34,38 +34,38 @@
                 },
                 {
                     "TemplateId":"3",
-                    "Title": "Deposit 3 tokens",
+                    "Title": "Deposit 3+ tokens",
                     "Action": "/isEligibleForDepositFrenzy3TokensAave",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "DefaultBadgeImg":"/img/aave-supply-l2-locked.png",
                     "Minted": "false",
                     "IpfsBadgeUri":null
                 },
                 {
                     "TemplateId":"4",
-                    "Title": "Deposit 6 tokens",
+                    "Title": "Deposit 6+ tokens",
                     "Action": "/isEligibleForDepositFrenzy6TokensAave",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "DefaultBadgeImg":"/img/aave-supply-l3-locked.png",
                     "Minted": "false",
                     "IpfsBadgeUri":null
                 },
                 {
                     "TemplateId":"5",
-                    "Title": "Borrow 3 tokens",
+                    "Title": "Borrow 3+ tokens",
                     "Action": "/isEligibleForBorrowFrenzy3TokensAave",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "DefaultBadgeImg":"/img/aave-borrow-l2-locked.png",
                     "Minted": "false",
                     "IpfsBadgeUri":null
                 }
                 ,
                 {
                     "TemplateId":"6",
-                    "Title": "Borrow 6 tokens",
+                    "Title": "Borrow 6+ tokens",
                     "Action": "/isEligibleForBorrowFrenzy6TokensAave",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "DefaultBadgeImg":"/img/aave-borrow-l3-locked.png",
                     "Minted": "false",
                     "IpfsBadgeUri":null
                 },

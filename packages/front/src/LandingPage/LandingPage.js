@@ -10,7 +10,14 @@ function LandingPage(props) {
   return (
       <Layout className="layout">
         <Header>
-          <div id="components-layout-landing" className="logo">EthThemAll</div>
+          <div id="components-layout-landing" className="logo">
+            <img className="logo"
+              src="/img/logo.png"
+              width="120"
+              height="31"
+            />
+
+          </div>
           <Menu theme="dark" mode="horizontal" style={{ textAlign: 'right' }}>
             <Menu.Item>
               <Button type="primary"><a href="/dashboard">Go To Dashboard</a></Button>
