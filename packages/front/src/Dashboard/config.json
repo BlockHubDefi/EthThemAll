@@ -10,42 +10,54 @@
                     "Title": "Deposit",
                     "Action": "/isEligibleForDepositFrenzyAave",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png"
+                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "Minted": "false",
+                    "IpfsBadgeUri":null
                 },
                 {
                     "TemplateId":"1",
                     "Title": "Borrow",
                     "Action": "/isEligibleForBorrowFrenzyAave",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png"
+                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "Minted": "false",
+                    "IpfsBadgeUri":null
                 },
                 {
                     "TemplateId":"2",
                     "Title": "Wojak",
                     "Action": "/isEligibleForLiquidationWojakAave",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png"
+                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "Minted": "false",
+                    "IpfsBadgeUri":null
                 },
                 {
                     "TemplateId":"3",
                     "Title": "Deposit 3 tokens",
                     "Action": "/isEligibleForDepositFrenzy3TokensAave",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png"
+                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "Minted": "false",
+                    "IpfsBadgeUri":null
                 },
                 {
                     "TemplateId":"4",
                     "Title": "Deposit 6 tokens",
                     "Action": "/isEligibleForDepositFrenzy6TokensAave",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png"
+                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "Minted": "false",
+                    "IpfsBadgeUri":null
                 },
                 {
                     "TemplateId":"5",
                     "Title": "Borrow 3 tokens",
                     "Action": "/isEligibleForBorrowFrenzy3TokensAave",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png"
+                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "Minted": "false",
+                    "IpfsBadgeUri":null
                 }
                 ,
                 {
@@ -53,14 +65,18 @@
                     "Title": "Borrow 6 tokens",
                     "Action": "/isEligibleForBorrowFrenzy6TokensAave",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png"
+                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "Minted": "false",
+                    "IpfsBadgeUri":null
                 },
                 {
                     "TemplateId":"7",
                     "Title": "Swap",
                     "Action": "/isEligibleForSwapFrenzyAave",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png"
+                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "Minted": "false",
+                    "IpfsBadgeUri":null
                 }
                 
             ]
@@ -73,21 +89,27 @@
                     "Title": "Chad",
                     "Action": "/isEligibleForLiquidityBadgeChadUniswap",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png"
+                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "Minted": "false",
+                    "IpfsBadgeUri":null
                 },
                 {
                     "TemplateId":"9",
                     "Title": "Virgin",
                     "Action": "/isEligibleForLiquidityBadgeVirginUniswap",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png"
+                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "Minted": "false",
+                    "IpfsBadgeUri":null
                 },
                 {
                     "TemplateId":"10",
                     "Title": "Collector",
                     "Action": "/isEligibleForLiquidityCollectorUniswap",
                     "Icon": "",
-                    "DefaultBadgeImg":"/img/aave-ph.png"
+                    "DefaultBadgeImg":"/img/aave-ph.png",
+                    "Minted": "false",
+                    "IpfsBadgeUri":null
                 }
             ]
         }

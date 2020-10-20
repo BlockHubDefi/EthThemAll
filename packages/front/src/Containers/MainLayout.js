@@ -1,10 +1,9 @@
 import React, { Fragment, useState } from 'react';
 import 'antd/dist/antd.css';
 import './mainLayout.css';
-import { Layout, Menu, Breadcrumb, Button } from 'antd';
+import { Layout, Menu, Breadcrumb, Button, Input, notification } from 'antd';
 import { Row, Col } from 'antd';
 import {
-    DesktopOutlined,
     PieChartOutlined
 } from '@ant-design/icons';
 import { Link } from "react-router-dom";
@@ -12,7 +11,8 @@ import { ethers } from "ethers";
 import Web3Modal from "web3modal";
 
 const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
+const { Search } = Input;
+//const { SubMenu } = Menu;
 
 function MainLayout(props) {
     const [collapsed, setCollapsed] = useState(false);
@@ -21,6 +21,24 @@ function MainLayout(props) {
 
     const onCollapse = collapsed => {
         setCollapsed(collapsed);
+    };
+
+    const openNotification = (title, text) => {
+        notification.open({
+          message: title,
+          description: text
+        });
+      };
+
+    const onSearch = value => {
+        try {
+            const address = ethers.utils.getAddress(value);
+            setWalletAddress(address);
+            openNotification('Success', `Address successfully changed to ${address}`);
+        } catch (e) {
+            //console.error('invalid ethereum address', e.message);
+            openNotification('Error', `Address is invalid`);
+        }
     };
 
     const loadWeb3Provider = async () => {
@@ -48,8 +66,10 @@ function MainLayout(props) {
             //const balance = await provider_.getBalance(addr);
             setWeb3connected(true);
             setWalletAddress(addr);
+            openNotification('Success', `Web3 connection success.`);
+            //setWalletAddress('0x3ee505ba316879d246a8fd2b3d7ee63b51b44fab');
         } catch (error) {
-            console.error(error);  
+            console.error(error);
         }
     };
 
@@ -77,9 +97,12 @@ function MainLayout(props) {
                 </Sider>
                 <Layout className="site-layout">
                     <Header className="site-layout-background" style={{ padding: 0 }}>
-                        <Row>
-                            <Col span={6} offset={20}>
-    <Button type="primary" onClick={loadWeb3Provider} >{web3connected ? walletAddress.substr(0,6) + '...' + walletAddress.substr(walletAddress.length-4,4) : 'Connect wallet'}</Button>
+                        <Row gutter={[16, { xs: 8, sm: 16, md: 24, lg: 32 }]} justify="end">
+                            <Col span={8}>
+                                <Search placeholder="force eth addr for test" onSearch={onSearch} style={{ width: 300 }} />
+                            </Col>
+                            <Col span={4}>
+                                <Button type="primary" onClick={loadWeb3Provider} >{web3connected ? walletAddress.substr(0, 6) + '...' + walletAddress.substr(walletAddress.length - 4, 4) : 'Connect wallet'}</Button>
                             </Col>
                         </Row>
 

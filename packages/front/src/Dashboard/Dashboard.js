@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Dashboard.css';
-import config from './config.json';
+import defaultConfig from './config.json';
 import { Tabs, Row, Col, Divider, Card, Button, Skeleton, Image, notification } from 'antd';
 import { GifOutlined, SketchOutlined } from '@ant-design/icons';
 // import kmd from '../../node_modules/cryptocurrency-icons/svg/color/eth.svg'
@@ -25,16 +25,15 @@ const openNotification = (title, text) => {
   });
 };
 
-const clickMint = (e,nft) => {
-  console.log(e.target);
-  e.target.loading=true;
+const clickMint = (nft) => {
   console.log(`Minting ${nft.Action} !`);
+
   if (ethAddr.indexOf('0x00') !== 0) {
     instance.post(nft.Action, {
       userAddress: ethAddr
     })
       .then(function (response) {
-        console.log(`${nft.Action}: ${response.data}`);
+        //console.log(`${nft.Action}: ${response.data}`);
         if (response.data === true)
           openNotification('Success', 'Badge Minted !');
         else
@@ -49,41 +48,93 @@ const clickMint = (e,nft) => {
   }
 };
 
-const projectList = config.NFTS_PER_PROJECT.map((project) => {
+const projectList = (conf) => {
   return (
-    <TabPane
-      tab={
-        <span>
-          <SketchOutlined />
-          {project.ProjectName}
-        </span>
-      }
-      key={project.ProjectName}
-    >
-      <Row gutter={[16, { xs: 8, sm: 16, md: 24, lg: 32 }]}>
-        {project.NFTS.map((nft) => {
-          return (
-            <Col className="gutter-row" span={6} key={nft.Action}>
-              <Card title={nft.Title} hoverable extra={<Image src={nft.Icon}></Image>} actions={[
-                <Button type="primary" onClick={e => clickMint(e,nft)}>Mint</Button>
-              ]}>
-                <Image src={nft.DefaultBadgeImg} />
-              </Card>
-            </Col>)
-        })}
-      </Row>
-    </TabPane>
-  );
-})
+    conf.NFTS_PER_PROJECT.map((project) => {
+      return (
+        <TabPane
+          tab={
+            <span>
+              <SketchOutlined />
+              {project.ProjectName}
+            </span>
+          }
+          key={project.ProjectName}
+        >
+          <Row gutter={[16, { xs: 8, sm: 16, md: 24, lg: 32 }]}>
+            {project.NFTS.map((nft) => {
+              //console.log(nft.Minted);
+              return (
+                <Col className="gutter-row" span={6} key={nft.Action}>
+                  <Card title={nft.Title} hoverable
+                    extra={<Image src={nft.Icon}></Image>}
+                    actions={[
+                      <>
+                        {
+                          nft.Minted === "false"
+                            ? <Button type="primary" onClick={() => clickMint(nft)}>Mint</Button>
+                            : <Button type="ghost">Already Minted !</Button>
+                        }
+                      </>
+                    ]}>
+                    <Image src={nft.Minted === "false" ? nft.DefaultBadgeImg : nft.IpfsBadgeUri} />
+                  </Card>
+                </Col>)
+            })}
+          </Row>
+        </TabPane>
+      );
+    })
+  )
+};
 
 function Dashboard(props) {
-  //ethAddr = '0xa0f75491720835b36edc92d06ddc468d201e9b73';
-  //ethAddr = '0x3ee505ba316879d246a8fd2b3d7ee63b51b44fab';
   ethAddr = props.ethAddr;
+  const [config, setConfig] = useState(defaultConfig);
+
+  useEffect(() => {
+    // retrieve user NFTs
+    if (ethAddr.indexOf('0x00') !== 0) {
+      instance.post('/retrieveUserNTNFTBadges', {
+        userAddress: ethAddr
+      })
+        .then(function (response) {
+          // console.log(`/retrieveUserNTNFTBadges:`);
+          // console.log(response.data);
+
+          if (response.data && response.data.userNTNFTs) {
+            let configCopy = config;
+
+            response.data.userNTNFTs.forEach(nft => {
+              //console.log('NFT already minted - TemplateID:' + nft.templateId);
+              // Set minted for them
+              configCopy.NFTS_PER_PROJECT.forEach(project => {
+                project.NFTS.forEach(n => {
+                  if (n.TemplateId == nft.templateId) {
+                    //console.log('Found already minted template ! : ' + n.TemplateId)
+                    n.Minted = true;
+                    n.IpfsBadgeUri = nft.badgeURI;
+                  }
+                });
+              });
+            });
+
+            setConfig({...configCopy});
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+    else {
+      //openNotification('Error', 'Please connect your wallet first');
+    }
+  }, [props.ethAddr]);
+
   return (
     <div>
       <Tabs defaultActiveKey="1">
-        {projectList}
+        {projectList(config)}
       </Tabs>
     </div>
   );
