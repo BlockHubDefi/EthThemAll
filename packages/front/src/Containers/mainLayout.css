@@ -1,3 +1,10 @@
+.logo {
+  height: 32px;
+  /* background-image: url("https://ipfs.io/ipfs/QmW9SHLoW1aDcPb6Zyht6QvSqF7AAVUNK9ksYNxvFcyTm1"); */
+  /* background-color: black; */
+  margin: 14px;
+}
+  
   .site-layout .site-layout-background {
     background: #fff;
   }

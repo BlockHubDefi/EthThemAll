@@ -75,7 +75,7 @@ function Dashboard(props) {
 
   const clickMint = (nft) => {
     //console.log(`Minting ${nft.Action} !`);
-  
+
     if (ethAddr.indexOf('0x00') !== 0) {
       instance.post(nft.Action, {
         userAddress: ethAddr.toLocaleLowerCase()

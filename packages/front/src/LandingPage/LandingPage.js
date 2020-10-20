@@ -11,12 +11,7 @@ function LandingPage(props) {
       <Layout className="layout">
         <Header>
           <div id="components-layout-landing" className="logo">
-            <img className="logo"
-              src="/img/logo.png"
-              width="120"
-              height="31"
-            />
-
+          <Image src="https://ipfs.io/ipfs/QmW9SHLoW1aDcPb6Zyht6QvSqF7AAVUNK9ksYNxvFcyTm1"></Image>
           </div>
           <Menu theme="dark" mode="horizontal" style={{ textAlign: 'right' }}>
             <Menu.Item>

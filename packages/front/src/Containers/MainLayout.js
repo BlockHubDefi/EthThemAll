@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import 'antd/dist/antd.css';
 import './mainLayout.css';
-import { Layout, Menu, Breadcrumb, Button, Input, notification } from 'antd';
+import { Layout, Menu, Breadcrumb, Button, Input, notification, Image } from 'antd';
 import { Row, Col } from 'antd';
 import {
     PieChartOutlined
@@ -77,7 +77,9 @@ function MainLayout(props) {
         <Fragment>
             <Layout style={{ minHeight: '100vh' }}>
                 <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
-                    <div className="logo" />
+                    <div className="logo">
+                        <Image src="https://ipfs.io/ipfs/QmW9SHLoW1aDcPb6Zyht6QvSqF7AAVUNK9ksYNxvFcyTm1"></Image>
+                    </div>
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
                         <Menu.Item key="1" icon={<PieChartOutlined />} >
                             <Link to="/dashboard">Dashboard</Link>
