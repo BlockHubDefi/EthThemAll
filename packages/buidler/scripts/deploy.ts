@@ -27,15 +27,28 @@ async function main() {
     await badgeMinter.addTemplate('Aave', 'isEligibleForBorrowFrenzy6', 'The user borrowed at least 6 different assets on Aave', 'QmZ6EURfShQT9ZhSQ7sjzFxfd9Hx5j4NmeYzte8NSqdCPt');
 
     // 8
-    await badgeMinter.addTemplate('Uniswap', 'isEligibleForLiquidityBadgeVirgin', 'The user has a Virgin position inside a liquidity pool (at least 1%)', 'QmRvdvfdbR4knesJ6ianWn4w3WAiTacfqxA7f1DQd5rBJ2');
+    await badgeMinter.addTemplate('Uniswap', 'isEligibleForLiquidityBadgeVirgin', 'The user has a Virgin position inside a liquidity pool (at least 1%)', 'QmdrbnZdPJUpyF9vf974mpaJskGEQTSEX3PQ96Pt2jfG9K');
     // 9
-    await badgeMinter.addTemplate('Uniswap', 'isEligibleForLiquidityBadgeCollector', 'The user has a Collector position inside a liquidity pool (between 1% and 10%)', 'QmRvdvfdbR4knesJ6ianWn4w3WAiTacfqxA7f1DQd5rBJ2');
+    await badgeMinter.addTemplate('Uniswap', 'isEligibleForLiquidityBadgeCollector', 'The user has a Collector position inside a liquidity pool (between 1% and 10%)', 'QmPb52banCQ1nt1HsszhqUePTLNNTD5cG98i2AXXChL6jo');
     // 10
-    await badgeMinter.addTemplate('Uniswap', 'isEligibleForLiquidityBadgeChad', 'The user has a Chad position inside a liquidity pool (more than 10%)', 'QmRvdvfdbR4knesJ6ianWn4w3WAiTacfqxA7f1DQd5rBJ2');
+    await badgeMinter.addTemplate('Uniswap', 'isEligibleForLiquidityBadgeChad', 'The user has a Chad position inside a liquidity pool (more than 10%)', 'QmVRTyqwKKzoV7FG34Lv8T94VLCme3qEsWqM6W9be64ThN');
     // 11
-    await badgeMinter.addTemplate('Uniswap', 'isEligibleForLiquidityCollector', 'The user has provided liquidity to at least 1 pool', 'QmRvdvfdbR4knesJ6ianWn4w3WAiTacfqxA7f1DQd5rBJ2');
+    await badgeMinter.addTemplate('Uniswap', 'isEligibleForLiquidityCollector', 'The user has provided liquidity to at least 1 pool', 'QmdrbnZdPJUpyF9vf974mpaJskGEQTSEX3PQ96Pt2jfG9K');
 
-    await badgeMinter.addTemplate('Compound', 'CompoundBadgeTest', 'CompoundBadgeTest_description', 'QmYaRBMTUBve6Uqtgwh4GhLjZzoi99mxVr1pGozSCrYThn');
+    // 12
+    await badgeMinter.addTemplate('Compound', 'isEligibleForLiquidationOnceCompound', 'The user has been liquidated at least once on Compound', 'QmPXM5y97Cn55XqdfMKxFaDdKdLfDG5rzHnU4odUKQswdT');
+    // 13
+    await badgeMinter.addTemplate('Compound', 'isEligibleForBorrowManiacCompound', 'The user borrowed at least once on Compound', 'Qmb4VyZbM5qEY3A6QYhqwBLihSQsGZBAb6pFqRtLRnCeTB');
+    // 14
+    await badgeMinter.addTemplate('Compound', 'isEligibleForBorrowFrenzy3Compound', 'The user borrowed at least 3 different assets on Compound', 'QmWbuYL4zetvAqkevi1bY8bTN1kSfAeGZ2fNpMXUU1Hvpt');
+    // 15
+    await badgeMinter.addTemplate('Compound', 'isEligibleForBorrowFrenzy6Compound', 'The user borrowed at least 6 different assets on Compound', 'QmY5P4NkJF71jctLixyetjsSPWSdL412tnvaCyFFJTUscZ');
+    // 16
+    await badgeMinter.addTemplate('Compound', 'isEligibleForDepositFrenzyCompound', 'The user deposited at least once on Compound', 'QmNmmNFh9n6cGHvmJ9hfU7xMYWnd8EeN3yR9KGx86N9ooW');
+    // 17
+    await badgeMinter.addTemplate('Compound', 'isEligibleForDepositFrenzy3Compound', 'The user deposited at least 3 different assets on Compound', 'QmXgj6YFiYJXYhw7M3yERqcGUroAAv8pDM7bJT4DX7p2PV');
+    // 18
+    await badgeMinter.addTemplate('Compound', 'isEligibleForDepositFrenzy6Compound', 'The user deposited at least 6 different assets on Compound', 'QmdoiAP4fnxjEA6PJPPUMWn65mpuUKeiTBtZtSqBHoES5K');
 
     log(await badgeMinter.getTemplate(0));
     log(await badgeMinter.getTemplate(1));

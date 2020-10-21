@@ -63,7 +63,7 @@ const verifyUserLiquidityPositionVirgin = async (userAddress: string) => {
       const URI = await addToIPFS({
         name: 'isEligibleForLiquidityBadgeVirgin',
         description: 'The user has a Virgin position inside a liquidity pool (at least 1%)',
-        image: 'QmRvdvfdbR4knesJ6ianWn4w3WAiTacfqxA7f1DQd5rBJ2',
+        image: 'QmdrbnZdPJUpyF9vf974mpaJskGEQTSEX3PQ96Pt2jfG9K',
         dataProof: liquidityPosition
       });
       // Then call smart-contract and mint badge NTNFT Virgin
@@ -106,7 +106,7 @@ const verifyUserLiquidityPositionCollector = async (userAddress: string) => {
       const URI = await addToIPFS({
         name: 'isEligibleForLiquidityBadgeCollector',
         description: 'The user has a Collector position inside a liquidity pool (between 1% and 10%)',
-        image: 'QmRvdvfdbR4knesJ6ianWn4w3WAiTacfqxA7f1DQd5rBJ2',
+        image: 'QmPb52banCQ1nt1HsszhqUePTLNNTD5cG98i2AXXChL6jo',
         dataProof: liquidityPosition
       });      // Then call smart-contract and mint badge NTNFT Chad
       try {
@@ -148,7 +148,7 @@ const verifyUserLiquidityPositionChad = async (userAddress: string) => {
       const URI = await addToIPFS({
         name: 'isEligibleForLiquidityBadgeChad',
         description: 'The user has a Chad position inside a liquidity pool (more than 10%)',
-        image: 'QmRvdvfdbR4knesJ6ianWn4w3WAiTacfqxA7f1DQd5rBJ2',
+        image: 'QmVRTyqwKKzoV7FG34Lv8T94VLCme3qEsWqM6W9be64ThN',
         dataProof: liquidityPosition
       });      // Then call smart-contract and mint badge NTNFT Chad
       try {
@@ -184,7 +184,7 @@ const verifyUserLiquidityCollection = async (userAddress: string) => {
     const URI = await addToIPFS({
       name: 'isEligibleForLiquidityCollector',
       description: 'The user has provided liquidity to at least 1 pool',
-      image: 'QmRvdvfdbR4knesJ6ianWn4w3WAiTacfqxA7f1DQd5rBJ2',
+      image: 'QmdrbnZdPJUpyF9vf974mpaJskGEQTSEX3PQ96Pt2jfG9K',
       dataProof: userLiquidityPosition.user.liquidityPositions
     });
     // Then call smart-contract and mint badge NTNFT Liquidity pool Collector

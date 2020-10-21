@@ -1,7 +1,13 @@
-import axios from 'axios';
 import { addToIPFS } from './ipfs';
 import { redeemBadge } from './minting';
+import { queryCoumpound } from './api/compound';
 const log = console.log;
+
+// export const isEligibleForLiquidationCompound = async (req: any, res: any) => {
+//     const userAddress = req.body.userAddress;
+//     const eligible = await verifyUserLiquidationHistory(userAddress);
+//     return res.send(eligible);
+// }
 
 export const isEligibleForBorrowFrenzyCompound = async (req: any, res: any) => {
     const userAddress = req.body.userAddress;
@@ -39,163 +45,179 @@ export const isEligibleForDepositFrenzy6TokensCompound = async (req: any, res: a
     return res.send(eligible);
 }
 
-const queryCoumpoundApi = async (compoundApi: string, query: string) => {
-    try {
-        const result = await axios.post(
-            `https://api.compound.finance/api/v2/${compoundApi}`,
-            { query }
-        );
-        return result;
-    } catch (error) {
-        log(error);
-        return;
-    }
-}
-
 // const verifyUserLiquidationHistory = async (userAddress: string) => {
-//     const subgraph = 'aave/protocol';
-//     const queryLiquidationHistory = `{
-//           user(id: "${userAddress}"){
-//             liquidationCallHistory{
-//               id
-//             }
-//         }}`;
-//     const liquidationHistory = await queryCoumpoundApi(compoundApi, queryLiquidationHistory);
+//     const endpoint = "account";
+//     const queryLiquidationHistory = `addresses[]=${userAddress}`;
+//     const liquidationHistory = await queryCoumpound(endpoint, queryLiquidationHistory);
 //     log(JSON.stringify(liquidationHistory));
-//     if (liquidationHistory?.user?.liquidationCallHistory?.length > 0) {
-//       // Store the liquditation history data inside IPFS meta-data
-//       const URI = await addToIPFS({
-//         name: 'isEligibleForLiquidationWojak',
-//         description: 'The user got liquididated at least once on Aave',
-//         image: 'QmRvdvfdbR4knesJ6ianWn4w3WAiTacfqxA7f1DQd5rBJ2',
-//         dataProof: liquidationHistory.user.liquidationCallHistory
-//       });
-//       // Then call smart-contract and mint badge NTNFT Liquidation Wojak
-//       try {
-//         log(URI);
-//         const tx = await redeemBadge(userAddress, URI.path, 1);
-//         return { isEligible: true, tx: tx };
-//       } catch (e) { return { isEligible: false }; }
+//     for (let x = 0; x < liquidationHistory.accounts[0].tokens.length; x++) {
+//         if (liquidationHistory.accounts[0].health.value < 1) {
+//             const URI = await addToIPFS({
+//                 name: 'isEligibleForLiquidationOnceCompound',
+//                 description: 'The user has been liquidated at least once on Compound',
+//                 image: 'QmPXM5y97Cn55XqdfMKxFaDdKdLfDG5rzHnU4odUKQswdT',
+//                 dataProof: liquidationHistory.accounts[0]
+//             });
+//             try {
+//                 log(URI);
+//                 const tx = await redeemBadge(userAddress, URI.path, 12);
+//                 return { isEligible: true, tx: tx };
+//             } catch (e) { return { isEligible: false }; }
+//         }
 //     }
-//     return { isEligible: false }
-//   }
+//     return { isEligible: false };
+// }
 
 const verifyUserBorrowHistory = async (userAddress: string) => {
-    const compoundApi = "account";
-    const queryBorrowHistory = `{"addresses": "${userAddress}"}`;
-    const borrowHistory = await queryCoumpoundApi(compoundApi, queryBorrowHistory);
-    log(borrowHistory);
-    if (borrowHistory) {
-        const URI = await addToIPFS({
-            name: 'isEligibleForBorrowManiacCompound',
-            description: 'The user borrowed at least once on Compound',
-            image: ''
-        });
-        try {
-            log(URI);
-            const tx = await redeemBadge(userAddress, URI.path, 5);
-            return { isEligible: true, tx: tx };
-          } catch (e) { return { isEligible: false }; }
+    const endpoint = "account";
+    const queryBorrowHistory = `addresses[]=${userAddress}`;
+    const borrowHistory = await queryCoumpound(endpoint, queryBorrowHistory);
+    log(JSON.stringify(borrowHistory));
+    for (let x = 0; x < borrowHistory.accounts[0].tokens.length; x++) {
+        if (parseFloat(borrowHistory.accounts[0].tokens[x].lifetime_borrow_interest_accrued.value) > 0) {
+            const URI = await addToIPFS({
+                name: 'isEligibleForBorrowManiacCompound',
+                description: 'The user borrowed at least once on Compound',
+                image: 'Qmb4VyZbM5qEY3A6QYhqwBLihSQsGZBAb6pFqRtLRnCeTB',
+                dataProof: borrowHistory.accounts[0].tokens[x].lifetime_borrow_interest_accrued
+            });
+            try {
+                log(URI);
+                const tx = await redeemBadge(userAddress, URI.path, 13);
+                return { isEligible: true, tx: tx };
+            } catch (e) { return { isEligible: false }; }
         }
-        return { isEligible: false };
+    }
+    return { isEligible: false };
 }
 
 const verifyUserBorrowHistory3Tokens = async (userAddress: string) => {
-    const compoundApi = "account";
-    const queryBorrowHistory = `{"addresses": "${userAddress}"}`;
-    const borrowHistory = await queryCoumpoundApi(compoundApi, queryBorrowHistory);
-    log(borrowHistory);
-    if (borrowHistory) {
+    const endpoint = "account";
+    const queryBorrowHistory = `addresses[]=${userAddress}`;
+    const borrowHistory = await queryCoumpound(endpoint, queryBorrowHistory);
+    log(JSON.stringify(borrowHistory));
+    let count = 0;
+    for (let x = 0; x < borrowHistory.accounts[0].tokens.length; x++) {
+        if (parseFloat(borrowHistory.accounts[0].tokens[x].lifetime_borrow_interest_accrued.value) > 0) {
+            count += 1;
+        }
+    }
+    if (count >= 3) {
         const URI = await addToIPFS({
             name: 'isEligibleForBorrowFrenzy3Compound',
             description: 'The user borrowed at least 3 different assets on Compound',
-            image: ''
+            image: 'QmWbuYL4zetvAqkevi1bY8bTN1kSfAeGZ2fNpMXUU1Hvpt',
+            dataProof: borrowHistory.accounts[0]
         });
         try {
             log(URI);
-            const tx = await redeemBadge(userAddress, URI.path, 5);
+            const tx = await redeemBadge(userAddress, URI.path, 14);
             return { isEligible: true, tx: tx };
-          } catch (e) { return { isEligible: false }; }
-        }
-        return { isEligible: false };
+        } catch (e) { return { isEligible: false }; }
+    }
+    return { isEligible: false };
 }
 
 const verifyUserBorrowHistory6Tokens = async (userAddress: string) => {
-    const compoundApi = "account";
-    const queryBorrowHistory = `{"addresses": "${userAddress}"}`;
-    const borrowHistory = await queryCoumpoundApi(compoundApi, queryBorrowHistory);
-    log(borrowHistory);
-    if (borrowHistory) {
+    const endpoint = "account";
+    const queryBorrowHistory = `addresses[]=${userAddress}`;
+    const borrowHistory = await queryCoumpound(endpoint, queryBorrowHistory);
+    log(JSON.stringify(borrowHistory));
+    let count = 0;
+    for (let x = 0; x < borrowHistory.accounts[0].tokens.length; x++) {
+        if (parseFloat(borrowHistory.accounts[0].tokens[x].lifetime_borrow_interest_accrued.value) > 0) {
+            count += 1;
+        }
+    }
+    if (count >= 6) {
         const URI = await addToIPFS({
             name: 'isEligibleForBorrowFrenzy6Compound',
             description: 'The user borrowed at least 6 different assets on Compound',
-            image: ''
+            image: 'QmY5P4NkJF71jctLixyetjsSPWSdL412tnvaCyFFJTUscZ',
+            dataProof: borrowHistory.accounts[0]
         });
         try {
             log(URI);
-            const tx = await redeemBadge(userAddress, URI.path, 5);
+            const tx = await redeemBadge(userAddress, URI.path, 15);
             return { isEligible: true, tx: tx };
-          } catch (e) { return { isEligible: false }; }
-        }
-        return { isEligible: false };
+        } catch (e) { return { isEligible: false }; }
+    }
+    return { isEligible: false };
 }
 
 const verifyUserDepositHistory = async (userAddress: string) => {
-    const compoundApi = "account";
-    const queryDepositHistory = `{"addresses": "${userAddress}"}`;
-    const depositHistory = await queryCoumpoundApi(compoundApi, queryDepositHistory);
-    log(depositHistory);
-    if (depositHistory) {
-        const URI = await addToIPFS({
-            name: 'isEligibleForDepositFrenzyCompound',
-            description: 'The user deposited at least once on Compound',
-            image: ''
-        });
-        try {
-            log(URI);
-            const tx = await redeemBadge(userAddress, URI.path, 5);
-            return { isEligible: true, tx: tx };
-          } catch (e) { return { isEligible: false }; }
+    const endpoint = "account";
+    const queryBorrowHistory = `addresses[]=${userAddress}`;
+    const borrowHistory = await queryCoumpound(endpoint, queryBorrowHistory);
+    log(JSON.stringify(borrowHistory));
+    for (let x = 0; x < borrowHistory.accounts[0].tokens.length; x++) {
+        if (parseFloat(borrowHistory.accounts[0].tokens[x].lifetime_supply_interest_accrued.value) > 0) {
+            const URI = await addToIPFS({
+                name: 'isEligibleForDepositFrenzyCompound',
+                description: 'The user deposited at least once on Compound',
+                image: 'QmNmmNFh9n6cGHvmJ9hfU7xMYWnd8EeN3yR9KGx86N9ooW',
+                dataProof: borrowHistory.accounts[0].tokens[x].lifetime_supply_interest_accrued
+            });
+            try {
+                log(URI);
+                const tx = await redeemBadge(userAddress, URI.path, 16);
+                return { isEligible: true, tx: tx };
+            } catch (e) { return { isEligible: false }; }
         }
-        return { isEligible: false };
+    }
+    return { isEligible: false };
 }
 
 const verifyUserDepositHistory3Tokens = async (userAddress: string) => {
-    const compoundApi = "account";
-    const queryDepositHistory = `{"addresses": "${userAddress}"}`;
-    const depositHistory = await queryCoumpoundApi(compoundApi, queryDepositHistory);
-    log(depositHistory);
-    if (depositHistory) {
+    const endpoint = "account";
+    const queryDepositHistory = `addresses[]=${userAddress}`;
+    const depositHistory = await queryCoumpound(endpoint, queryDepositHistory);
+    log(JSON.stringify(depositHistory));
+    let count = 0;
+    for (let x = 0; x < depositHistory.accounts[0].tokens.length; x++) {
+        if (parseFloat(depositHistory.accounts[0].tokens[x].lifetime_supply_interest_accrued.value) > 0) {
+            count += 1;
+        }
+    }
+    if (count >= 3) {
         const URI = await addToIPFS({
             name: 'isEligibleForDepositFrenzy3Compound',
-            description: 'The user deposited at least 3 different tokens on Compound',
-            image: ''
+            description: 'The user deposited at least 3 different assets on Compound',
+            image: 'QmXgj6YFiYJXYhw7M3yERqcGUroAAv8pDM7bJT4DX7p2PV',
+            dataProof: depositHistory.accounts[0]
         });
         try {
             log(URI);
-            const tx = await redeemBadge(userAddress, URI.path, 5);
+            const tx = await redeemBadge(userAddress, URI.path, 17);
             return { isEligible: true, tx: tx };
-          } catch (e) { return { isEligible: false }; }
-        }
-        return { isEligible: false };
+        } catch (e) { return { isEligible: false }; }
+    }
+    return { isEligible: false };
 }
 
 const verifyUserDepositHistory6Tokens = async (userAddress: string) => {
-    const compoundApi = "account";
-    const queryDepositHistory = `{"addresses": "${userAddress}"}`;
-    const depositHistory = await queryCoumpoundApi(compoundApi, queryDepositHistory);
-    log(depositHistory);
-    if (depositHistory) {
+    const endpoint = "account";
+    const queryDepositHistory = `addresses[]=${userAddress}`;
+    const depositHistory = await queryCoumpound(endpoint, queryDepositHistory);
+    log(JSON.stringify(depositHistory));
+    let count = 0;
+    for (let x = 0; x < depositHistory.accounts[0].tokens.length; x++) {
+        if (parseFloat(depositHistory.accounts[0].tokens[x].lifetime_supply_interest_accrued.value) > 0) {
+            count += 1;
+        }
+    }
+    if (count >= 6) {
         const URI = await addToIPFS({
             name: 'isEligibleForDepositFrenzy6Compound',
-            description: 'The user deposited at least 6 different tokens on Compound',
-            image: ''
+            description: 'The user deposited at least 6 different assets on Compound',
+            image: 'QmdoiAP4fnxjEA6PJPPUMWn65mpuUKeiTBtZtSqBHoES5K',
+            dataProof: depositHistory.accounts[0]
         });
         try {
             log(URI);
-            const tx = await redeemBadge(userAddress, URI.path, 5);
+            const tx = await redeemBadge(userAddress, URI.path, 18);
             return { isEligible: true, tx: tx };
-          } catch (e) { return { isEligible: false }; }
-        }
-        return { isEligible: false };
+        } catch (e) { return { isEligible: false }; }
+    }
+    return { isEligible: false };
 }
