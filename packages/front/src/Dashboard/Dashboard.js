@@ -122,7 +122,7 @@ function Dashboard(props) {
                     n.Minted = true;
                     n.IpfsBadgeUri = `https://ipfs.io/ipfs/${nft.templateData[2]}`;
                   }
-                });
+                }); 
               });
             });
 

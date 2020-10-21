@@ -3,7 +3,7 @@
     "AAVE_BASE_IMG": "/img/aave-ph.png",
     "NFTS_PER_PROJECT": [
         {
-            "ProjectName" : "AAVE",
+            "ProjectName" : "Aave",
             "NFTS": [
                 {
                     "TemplateId":"2",
@@ -72,7 +72,7 @@
             ]
         },
         {
-            "ProjectName" : "UNISWAP",
+            "ProjectName" : "Uniswap",
             "NFTS": [
                 {
                     "TemplateId":"10",
@@ -98,6 +98,65 @@
                     "Action": "/isEligibleForLiquidityBadgeCollectorUniswap",
                     "Icon": "",
                     "IpfsLockedBadgeHash":"QmRvdvfdbR4knesJ6ianWn4w3WAiTacfqxA7f1DQd5rBJ2",
+                    "Minted": "false",
+                    "IpfsBadgeUri":null
+                }
+            ]
+        },
+        {
+            "ProjectName" : "Compound",
+            "NFTS": [
+                {
+                    "TemplateId":"15",
+                    "Title": "Deposit",
+                    "Action": "/isEligibleForDepositFrenzyCompound",
+                    "Icon": "",
+                    "IpfsLockedBadgeHash":"QmSosFtTnejnUrYuEb2Ad5FrLKg9AAgEiqskcwjogzkp9J",
+                    "Minted": "false",
+                    "IpfsBadgeUri":null
+                },
+                {
+                    "TemplateId":"12",
+                    "Title": "Borrow",
+                    "Action": "/isEligibleForBorrowFrenzyCompound",
+                    "Icon": "",
+                    "IpfsLockedBadgeHash":"QmQYoyqVbCPiS59sojwuKwjc8X5cYs6hHPhdBYMkFALpRe",
+                    "Minted": "false",
+                    "IpfsBadgeUri":null
+                },
+                {
+                    "TemplateId":"16",
+                    "Title": "Deposit 3 tokens",
+                    "Action": "/isEligibleForDepositFrenzy3TokensCompound",
+                    "Icon": "",
+                    "IpfsLockedBadgeHash":"QmPFCFNyobdRX1BVnG2M4XZE7HwNYZrPEEoAxDVnHsjbaZ",
+                    "Minted": "false",
+                    "IpfsBadgeUri":null
+                },
+                {
+                    "TemplateId":"17",
+                    "Title": "Deposit 6 tokens",
+                    "Action": "/isEligibleForDepositFrenzy6TokensCompound",
+                    "Icon": "",
+                    "IpfsLockedBadgeHash":"QmVc34tX1gyicHvFvzcobfMZPzQR8EGXtLLcfkzFf4GPKf",
+                    "Minted": "false",
+                    "IpfsBadgeUri":null
+                },
+                {
+                    "TemplateId":"13",
+                    "Title": "Borrow 3 tokens",
+                    "Action": "/isEligibleForBorrowFrenzy3TokensCompound",
+                    "Icon": "",
+                    "IpfsLockedBadgeHash":"QmdWXYeinuTQiaiwspct5pLLUEb38t5gxHpSZZXHy8caoz",
+                    "Minted": "false",
+                    "IpfsBadgeUri":null
+                },
+                {
+                    "TemplateId":"14",
+                    "Title": "Borrow 6 tokens",
+                    "Action": "/isEligibleForBorrowFrenzy6TokensCompound",
+                    "Icon": "",
+                    "IpfsLockedBadgeHash":"QmavcWgQcSqdFaPaXYkJeNad2Uc9VXXBv5sWXWKuXMRX94",
                     "Minted": "false",
                     "IpfsBadgeUri":null
                 }
