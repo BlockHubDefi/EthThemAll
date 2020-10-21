@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Dashboard.css';
 import defaultConfig from './config.json';
-import { Tabs, Row, Col, Divider, Card, Button, Skeleton, Image, notification } from 'antd';
+import { Tabs, Row, Col, Divider, Card, Button, Spin, Image, notification } from 'antd';
 import Icon, { GifOutlined, SketchOutlined } from '@ant-design/icons';
 // import kmd from '../../node_modules/cryptocurrency-icons/svg/color/eth.svg'
 
@@ -38,6 +38,8 @@ function Dashboard(props) {
   ethAddr = props.ethAddr;
   const [config, setConfig] = useState(defaultConfig);
   const [badgeMinted, setBadgeMinted] = useState(false);
+  const [showSpin, setShowSpin] = useState(false);
+
 
   const projectList = (conf) => {
     return (
@@ -86,8 +88,10 @@ function Dashboard(props) {
 
   const clickMint = (nft) => {
     //console.log(`Minting ${nft.Action} !`);
-
+    
     if (ethAddr.indexOf('0x00') !== 0) {
+      setShowSpin(true);
+
       instance.post(nft.Action, {
         userAddress: ethAddr.toLocaleLowerCase()
       })
@@ -99,20 +103,28 @@ function Dashboard(props) {
           }
           else
             openNotification('Sorry bro', 'You are not eligibile for this badge');
+
+            setShowSpin(false);
         })
         .catch(function (error) {
           console.log(error);
+          setShowSpin(false);
         });
     }
     else {
       openNotification('Error', 'Please connect your wallet first');
     }
+
+    
   };
 
   useEffect(() => {
     setBadgeMinted(false);
+
+    //setConfig(defaultConfig);
     // retrieve user NFTs
     if (ethAddr.indexOf('0x00') !== 0) {
+      setShowSpin(true);
       instance.post('/retrieveUserNTNFTBadges', {
         userAddress: ethAddr
       })
@@ -121,7 +133,7 @@ function Dashboard(props) {
           // console.log(response.data);
 
           if (response.data && response.data.userNTNFTs) {
-            let configCopy = config;
+            let configCopy = defaultConfig;
 
             response.data.userNTNFTs.forEach(nft => {
               //console.log('NFT already minted - TemplateID:' + nft.templateId);
@@ -142,7 +154,10 @@ function Dashboard(props) {
         })
         .catch(function (error) {
           console.log(error);
+          setShowSpin(false);
         });
+
+        setShowSpin(false);
     }
     else {
       //openNotification('Error', 'Please connect your wallet first');
@@ -151,6 +166,7 @@ function Dashboard(props) {
 
   return (
     <div>
+      {showSpin ? <Spin /> : ''}
       <Tabs defaultActiveKey="1">
         {projectList(config)}
       </Tabs>
