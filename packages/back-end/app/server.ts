@@ -28,7 +28,12 @@ import {
 } from './lib/aave';
 
 import {
-  isEligibleForBorrowFrenzyCompound
+  isEligibleForBorrowFrenzyCompound,
+  isEligibleForBorrowFrenzy3TokensCompound,
+  isEligibleForBorrowFrenzy6TokensCompound,
+  isEligibleForDepositFrenzyCompound,
+  isEligibleForDepositFrenzy3TokensCompound,
+  isEligibleForDepositFrenzy6TokensCompound
 } from './lib/compound';
 
 import { 
@@ -37,6 +42,11 @@ import {
 } from './lib/NTNFT';
 
 app.post('/isEligibleForBorrowFrenzyCompound', isEligibleForBorrowFrenzyCompound);
+app.post('/isEligibleForBorrowFrenzy3TokensCompound', isEligibleForBorrowFrenzy3TokensCompound);
+app.post('/isEligibleForBorrowFrenzy6TokensCompound', isEligibleForBorrowFrenzy6TokensCompound);
+app.post('/isEligibleForDepositFrenzyCompound', isEligibleForDepositFrenzyCompound);
+app.post('/isEligibleForDepositFrenzy3TokensCompound', isEligibleForDepositFrenzy3TokensCompound);
+app.post('/isEligibleForDepositFrenzy6TokensCompound', isEligibleForDepositFrenzy6TokensCompound);
 app.post('/isEligibleForLiquidityBadgeCollectorUniswap', isEligibleForLiquidityBadgeCollector); // templateID: 9 // If the user has a Collecor position inside a liquidity pool (between 1 and 10%)
 app.post('/isEligibleForLiquidityBadgeVirginUniswap', isEligibleForLiquidityBadgeVirgin);       // templateID: 8 // If the user has a Virgin position inside a liquidity pool (at least 1%)
 app.post('/isEligibleForLiquidityBadgeChadUniswap', isEligibleForLiquidityBadgeChad);           // templateID: 10 // If the user has a Chad position inside a liquidity pool (more than 10%)
