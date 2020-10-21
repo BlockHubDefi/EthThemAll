@@ -2,8 +2,18 @@ import React, { useEffect, useState } from 'react';
 import './Dashboard.css';
 import defaultConfig from './config.json';
 import { Tabs, Row, Col, Divider, Card, Button, Skeleton, Image, notification } from 'antd';
-import { GifOutlined, SketchOutlined } from '@ant-design/icons';
+import Icon, { GifOutlined, SketchOutlined } from '@ant-design/icons';
 // import kmd from '../../node_modules/cryptocurrency-icons/svg/color/eth.svg'
+
+import { ReactComponent as AaveIconSvg } from "../icons/aave-icon.svg"
+import { ReactComponent as UniIconSvg } from "../icons/uni-icon2.svg"
+import { ReactComponent as CompIconSvg } from "../icons/comp-icon.svg"
+
+const AaveIcon = props => <Icon style={{ fontSize: '32px', color: '#ffffff'}} component={AaveIconSvg} {...props} />;
+const UniIcon = props => <Icon style={{ fontSize: '32px', color: '#ffffff'}} component={UniIconSvg} {...props} />;
+const CompIcon = props => <Icon style={{ fontSize: '32px', color: '#ffffff'}} component={CompIconSvg} {...props} />;
+
+
 const axios = require('axios').default;
 const instance = axios.create({
   baseURL: 'http://localhost:3001/',
@@ -36,7 +46,9 @@ function Dashboard(props) {
           <TabPane
             tab={
               <span>
-                <SketchOutlined />
+                { project.ProjectName === 'Aave' ?  <AaveIcon /> : '' }
+                { project.ProjectName === 'Compound' ?  <CompIcon /> : '' }
+                { project.ProjectName === 'Uniswap' ?  <UniIcon fill="#fff"/> : '' }
                 {project.ProjectName}
               </span>
             }
@@ -46,14 +58,13 @@ function Dashboard(props) {
               {project.NFTS.map((nft) => {
                 //console.log(nft.Minted);
                 return (
-                  <Col className="gutter-row" span={6} key={nft.Action}>
+                  <Col className={['gutter-row', 'project', project.ProjectName.toLowerCase()].join(' ') } span={6} key={nft.Action}>
                     <Card title={nft.Title} hoverable
-                      extra={<Image src={nft.Icon}></Image>}
                       actions={[
                         <>
                           {
                             nft.Minted === "false"
-                              ? <Button type="primary" onClick={() => clickMint(nft)}>Mint</Button>
+                              ? <Button type="primary" onClick={() => clickMint(nft)}>MINT</Button>
                               : <Button type="ghost">Already Minted !</Button>
                           }
                         </>

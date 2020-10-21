@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.less';
 import './mainLayout.css';
 import { Layout, Menu, Breadcrumb, Button, Input, notification, Image } from 'antd';
 import { Row, Col } from 'antd';

@@ -1,0 +1,53 @@
+.ant-card-head-title {
+    font-size: 32px;
+    font-family: Deutsch;
+    text-align: center;
+}
+
+.ant-tabs-tab-btn {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.ant-tabs-tab:nth-child(1).ant-tabs-tab-active .ant-tabs-tab-btn {
+   color: #6d88d7 !important;
+}
+
+.ant-tabs-tab:nth-child(2).ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #f357a1 !important;
+}
+
+.ant-tabs-tab:nth-child(3).ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: #75f0b7 !important;
+}
+
+.ant-card-actions button {
+    line-height: 1.8;
+    height: 40px;
+    font-size: 20px;
+    font-family: Josefin;
+    text-shadow: #000 4px 1px 26px;
+}
+
+.project.aave .ant-card-actions button {
+  background-color: #6d88d7;
+  border-color: #6d88d7;
+  width: 100%;
+}
+
+.project.compound .ant-card-actions button {
+  background-color: #75f0b7;
+  border-color: #75f0b7;
+  width: 100%;
+}
+
+.project.uniswap .ant-card-actions button {
+  background-color: #f357a1;
+  border-color: #f357a1;
+  width: 100%;
+}
+
+.ant-card-actions > li {
+    height: 100%;
+    margin: 0 !important;
+}

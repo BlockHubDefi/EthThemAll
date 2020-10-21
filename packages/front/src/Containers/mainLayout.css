@@ -4,9 +4,13 @@
   /* background-color: black; */
   margin: 14px;
 }
+
+body {
+  font-family: "Josefin";
+}
   
   .site-layout .site-layout-background {
-    background: #fff;
+    background: #141414;
   }
   [data-theme="dark"] .site-layout .site-layout-background {
       background: #141414;

@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.less';
 import Dashboard from './Dashboard/Dashboard.js';
 import About from './About/About.js';
 import LandingPage from "./LandingPage/LandingPage";

@@ -1,6 +1,14 @@
+.logo {
+    height: 32px;
+    /* background-image: url("https://ipfs.io/ipfs/QmW9SHLoW1aDcPb6Zyht6QvSqF7AAVUNK9ksYNxvFcyTm1"); */
+    /* background-color: black; */
+    margin: 14px;
+}
+
 .site-layout-content {
-    background: #fff;
     padding: 24px;
+    margin: 0 auto;
+    max-width: 1024px;
     min-height: 100vh;
 }
 
@@ -18,4 +26,16 @@
 
 #projects-row {
     min-height: 0;
+}
+
+.ant-result-extra a {
+    padding: 10px 40px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 28px;
+}
+
+.ant-result-extra a span {
+    height: 50px;
+    line-height: 50px;
 }
