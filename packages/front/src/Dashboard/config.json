@@ -28,7 +28,7 @@
                     "Title": "Wojak",
                     "Action": "/isEligibleForLiquidationWojakAave",
                     "Icon": "",
-                    "IpfsLockedBadgeHash":"QmRvdvfdbR4knesJ6ianWn4w3WAiTacfqxA7f1DQd5rBJ2",
+                    "IpfsLockedBadgeHash":"QmWfpF7Cr4inv9DGsrKnVLaAGzZ93w5F47gwBxrYGGhnJr",
                     "Minted": "false",
                     "IpfsBadgeUri":null
                 },
@@ -79,7 +79,7 @@
                     "Title": "Chad",
                     "Action": "/isEligibleForLiquidityBadgeChadUniswap",
                     "Icon": "",
-                    "IpfsLockedBadgeHash":"QmRvdvfdbR4knesJ6ianWn4w3WAiTacfqxA7f1DQd5rBJ2",
+                    "IpfsLockedBadgeHash":"QmZ7UzRRVSmWVcx3e4FKfTnw8pe7ysJooFPyzNeyvgsiDU",
                     "Minted": "false",
                     "IpfsBadgeUri":null
                 },
@@ -88,7 +88,7 @@
                     "Title": "Virgin",
                     "Action": "/isEligibleForLiquidityBadgeVirginUniswap",
                     "Icon": "",
-                    "IpfsLockedBadgeHash":"QmRvdvfdbR4knesJ6ianWn4w3WAiTacfqxA7f1DQd5rBJ2",
+                    "IpfsLockedBadgeHash":"QmQ9sZPCrk6twB9yjTKmoyc5dSq5BBZetmWskaUPzeF4xy",
                     "Minted": "false",
                     "IpfsBadgeUri":null
                 },
@@ -97,7 +97,7 @@
                     "Title": "Collector",
                     "Action": "/isEligibleForLiquidityBadgeCollectorUniswap",
                     "Icon": "",
-                    "IpfsLockedBadgeHash":"QmRvdvfdbR4knesJ6ianWn4w3WAiTacfqxA7f1DQd5rBJ2",
+                    "IpfsLockedBadgeHash":"QmUNecxTtmfs5VoWvHVijFk5Be2VNWVX3SzP6cfGXqKzLq",
                     "Minted": "false",
                     "IpfsBadgeUri":null
                 }
