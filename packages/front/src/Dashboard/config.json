@@ -93,7 +93,7 @@
                     "IpfsBadgeUri":null
                 },
                 {
-                    "TemplateId":"11",
+                    "TemplateId":"9",
                     "Title": "Collector",
                     "Action": "/isEligibleForLiquidityBadgeCollectorUniswap",
                     "Icon": "",
@@ -107,7 +107,7 @@
             "ProjectName" : "Compound",
             "NFTS": [
                 {
-                    "TemplateId":"15",
+                    "TemplateId":"16",
                     "Title": "Deposit",
                     "Action": "/isEligibleForDepositFrenzyCompound",
                     "Icon": "",
@@ -116,7 +116,7 @@
                     "IpfsBadgeUri":null
                 },
                 {
-                    "TemplateId":"12",
+                    "TemplateId":"13",
                     "Title": "Borrow",
                     "Action": "/isEligibleForBorrowFrenzyCompound",
                     "Icon": "",
@@ -125,7 +125,7 @@
                     "IpfsBadgeUri":null
                 },
                 {
-                    "TemplateId":"16",
+                    "TemplateId":"17",
                     "Title": "Deposit 3 tokens",
                     "Action": "/isEligibleForDepositFrenzy3TokensCompound",
                     "Icon": "",
@@ -134,7 +134,7 @@
                     "IpfsBadgeUri":null
                 },
                 {
-                    "TemplateId":"17",
+                    "TemplateId":"18",
                     "Title": "Deposit 6 tokens",
                     "Action": "/isEligibleForDepositFrenzy6TokensCompound",
                     "Icon": "",
@@ -143,7 +143,7 @@
                     "IpfsBadgeUri":null
                 },
                 {
-                    "TemplateId":"13",
+                    "TemplateId":"14",
                     "Title": "Borrow 3 tokens",
                     "Action": "/isEligibleForBorrowFrenzy3TokensCompound",
                     "Icon": "",
@@ -152,7 +152,7 @@
                     "IpfsBadgeUri":null
                 },
                 {
-                    "TemplateId":"14",
+                    "TemplateId":"15",
                     "Title": "Borrow 6 tokens",
                     "Action": "/isEligibleForBorrowFrenzy6TokensCompound",
                     "Icon": "",
