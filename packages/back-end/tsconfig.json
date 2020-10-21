@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "sourceMap": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "noImplicitReturns": false,
+    "noUnusedLocals": true,
+    "target": "es2017",
+    "outDir": "server",
+    "skipLibCheck": true,
+    "noImplicitAny": false,
+    "resolveJsonModule": true
+  },
+  "exclude": [
+    "node_modules",
+    ".npm"
+  ]
+}
