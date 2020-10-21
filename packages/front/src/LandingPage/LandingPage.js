@@ -1,6 +1,6 @@
 import React from 'react';
 import './LandingPage.css';
-import { Layout, Menu, Divider, Breadcrumb, Button, Row, Col, Skeleton, Typography, Image, Card, Result } from 'antd';
+import { Layout, Divider, Button, Row, Col, Typography, Image, Card, Result } from 'antd';
 
 const { Header, Content, Footer } = Layout;
 const { Title, Paragraph } = Typography;
@@ -20,33 +20,19 @@ function LandingPage(props) {
               <Col span={24}>
               <Result
                 icon={<Image
+                  height={320}
                   src="/img/hero.jpg"
                 />}
-                title="EthThemAll"
                 subTitle="In the vast forest of Ethereum we all delve and wander onto different farms, citadels and even slums... so why not have an NFT-based proof of our undying devotion to the ecosystem?"
-                extra={<Button type="primary" href="/dashboard">Unlock Wallet</Button>}
+                extra={<Button type="primary" href="/dashboard">Start</Button>}
               />
-              {/* <Image
-                src="/img/hero.jpg"
-              /> */}
               </Col>
-              {/* <Col span={12} 
-                style={{ 
-                  display: "flex",
-                  justifyContent: 'center',
-                  alignItems: 'center'
-                }}>
-                <div style={{ padding: '0 40px'}}>
-                  <Title level={2}>EthThemAll</Title>
-                  <Paragraph>
-                  In the vast forest of Ethereum we all delve and wander onto different farms, citadels and even slums... so why not have an NFT-based proof of our undying devotion to the ecosystem?
-                  </Paragraph>
-                </div>
-              </Col> */}
             </Row>
             <Divider />
-            <Title level={2}>How it works</Title>
             <Row>
+              <Col span={24}>
+                <Title level={2}>How it works</Title>
+              </Col>
               <Col span={8}>
                 <Card
                   style={{ width: 240 }}
@@ -121,35 +107,20 @@ function LandingPage(props) {
                 <div style={{textAlign: 'center'}}>
                   <Title>Projects we support so far</Title>
                   <div>
-                    <Row id="projects-row" gutter={16}>
-                      <Col span={4}>
-                        <Card>
-                          <Skeleton.Image/>
+                    <Row id="projects-row" gutter={24}>
+                      <Col span={8}>
+                        <Card id="aave-project">
+                          <Image src="../../img/projects/aave-project.png"/>
                         </Card>
                       </Col>
-                      <Col span={4}>
+                      <Col span={8}>
                         <Card>
-                          <Skeleton.Image/>
+                        <Image src="../../img/projects/comp-project.png"/>
                         </Card>
                       </Col>
-                      <Col span={4}>
+                      <Col span={8}>
                         <Card>
-                          <Skeleton.Image/>
-                        </Card>
-                      </Col>
-                      <Col span={4}>
-                        <Card>
-                          <Skeleton.Image/>
-                        </Card>
-                      </Col>
-                      <Col span={4}>
-                        <Card>
-                          <Skeleton.Image/>
-                        </Card>
-                      </Col>
-                      <Col span={4}>
-                        <Card>
-                          <Skeleton.Image/>
+                        <Image src="../../img/projects/uni-project.png"/>
                         </Card>
                       </Col>
                     </Row>
@@ -167,7 +138,7 @@ function LandingPage(props) {
                 >
                 <div style={{textAlign: 'center'}}>
                   <Title level={2}>What are you waiting for?</Title>
-                  <Button type="primary" shape="round" size="large">Unlock Wallet</Button>
+                  <Button id="btn-cta" href="/dashboard" type="primary" size="large">Start</Button>
                 </div>
               </Col>
             </Row>
