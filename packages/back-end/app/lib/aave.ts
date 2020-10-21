@@ -4,56 +4,56 @@ import { redeemBadge } from './minting';
 const log = console.log;
 
 // If the user swaps 50 times or more on Aave
-export const isEligibleForSwapFrenzy = async (req: any, res: any) => {
+export const isEligibleForSwapFrenzyAave = async (req: any, res: any) => {
   const userAddress = req.body.userAddress;
   const eligible = await verifyUserSwapHistory(userAddress);
   return res.send(eligible);
 }
 
 // If the user borrowed at least once on Aave
-export const isEligibleForBorrowFrenzy = async (req: any, res: any) => {
+export const isEligibleForBorrowFrenzyAave = async (req: any, res: any) => {
   const userAddress = req.body.userAddress;
   const eligible = await verifyUserBorrowHistory(userAddress);
   return res.send(eligible);
 }
 
 // If the user borrowed at least 3 different tokens on Aave
-export const isEligibleForBorrowFrenzy3Tokens = async (req: any, res: any) => {
+export const isEligibleForBorrowFrenzy3TokensAave = async (req: any, res: any) => {
   const userAddress = req.body.userAddress;
   const eligible = await verifyUserBorrowHistory3Tokens(userAddress);
   return res.send(eligible);
 }
 
 // If the user borrowed at least 6 different tokens on Aave
-export const isEligibleForBorrowFrenzy6Tokens = async (req: any, res: any) => {
+export const isEligibleForBorrowFrenzy6TokensAave = async (req: any, res: any) => {
   const userAddress = req.body.userAddress;
   const eligible = await verifyUserBorrowHistory6Tokens(userAddress);
   return res.send(eligible);
 }
 
 // If the user deposited at least once on Aave
-export const isEligibleForDepositFrenzy = async (req: any, res: any) => {
+export const isEligibleForDepositFrenzyAave = async (req: any, res: any) => {
   const userAddress = req.body.userAddress;
   const eligible = await verifyUserDepositHistory(userAddress);
   return res.send(eligible);
 }
 
 // If the user deposited at least 3 different tokens on Aave
-export const isEligibleForDepositFrenzy3Tokens = async (req: any, res: any) => {
+export const isEligibleForDepositFrenzy3TokensAave = async (req: any, res: any) => {
   const userAddress = req.body.userAddress;
   const eligible = await verifyUserDepositHistory3Tokens(userAddress);
   return res.send(eligible);
 }
 
 // If the user deposited at least 6 different tokens on Aave
-export const isEligibleForDepositFrenzy6Tokens = async (req: any, res: any) => {
+export const isEligibleForDepositFrenzy6TokensAave = async (req: any, res: any) => {
   const userAddress = req.body.userAddress;
   const eligible = await verifyUserDepositHistory6Tokens(userAddress);
   return res.send(eligible);
 }
 
 // If the user got liquididated at least once on Aave (can add more)
-export const isEligibleForLiquidationWojak = async (req: any, res: any) => {
+export const isEligibleForLiquidationWojakAave = async (req: any, res: any) => {
   const userAddress = req.body.userAddress;
   const eligible = await verifyUserLiquidationHistory(userAddress);
   return res.send(eligible);
