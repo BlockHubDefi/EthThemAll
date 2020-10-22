@@ -22,13 +22,28 @@
  npm install
  ```
 
-2. then you can start the server:
+2. then you can start the server (port 4000):
 ```bash
 npm start
 ```
+Swagger-UI available at http://localhost:4000/api-docs/
 
 ---
 
 ### Front
+
+1. first you need to download the node modules:
+ ```bash
+ npm install
+ ```
+ or
+  ```bash
+ yarn install
+ ```
+
+2. then you can start the server (port 3000):
+```bash
+npm start
+```
 
 ### Testing

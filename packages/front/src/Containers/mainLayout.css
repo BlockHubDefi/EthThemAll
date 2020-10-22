@@ -1,0 +1,18 @@
+.logo {
+  height: 32px;
+  /* background-image: url("https://ipfs.io/ipfs/QmW9SHLoW1aDcPb6Zyht6QvSqF7AAVUNK9ksYNxvFcyTm1"); */
+  /* background-color: black; */
+  margin: 14px;
+}
+
+body {
+  font-family: "Josefin";
+}
+  
+  .site-layout .site-layout-background {
+    background: #141414;
+  }
+  [data-theme="dark"] .site-layout .site-layout-background {
+      background: #141414;
+  }
+  
