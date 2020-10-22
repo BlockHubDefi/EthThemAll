@@ -35,26 +35,26 @@ function LandingPage(props) {
               </Col>
               <Col span={8}>
                 <Card
-                  style={{ width: 240 }}
+                  style={{ width: 240, textAlign: "center"  }}
                   cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
                 >
-                  <Card.Meta title="Test" />
+                  <Card.Meta title="Connect Your Wallet" />
                 </Card>
               </Col>
               <Col span={8}>
                 <Card
-                  style={{ width: 240 }}
+                  style={{ width: 240, textAlign: "center" }}
                   cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
                 >
-                  <Card.Meta title="Test" />
+                  <Card.Meta title="Explore Projects" />
                 </Card>
               </Col>
               <Col span={8}>
                 <Card
-                  style={{ width: 240 }}
+                  style={{ width: 240, textAlign: "center"  }}
                   cover={<img alt="example" src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png" />}
                 >
-                  <Card.Meta title="Test" />
+                  <Card.Meta title="Unlock Achievements :)" />
                 </Card>
               </Col>
             </Row>
@@ -62,7 +62,7 @@ function LandingPage(props) {
             <Row>
               <Col span={12}>
                 <div style={{textAlign: 'center'}}>
-                  <Title level={2}>What's NFT</Title>
+                  <Title level={2}>Education of new users</Title>
                   <Paragraph style={{ padding: '20px 40px'}}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum fusce ut placerat orci nulla pellentesque. Ac turpis egestas sed tempus urna et pharetra pharetra. Sed blandit libero volutpat sed cras ornare arcu dui. Luctus venenatis lectus magna fringilla urna porttitor rhoncus. Donec ac odio tempor orci. Lacus viverra vitae congue eu. Ut enim blandit volutpat maecenas volutpat blandit. Maecenas pharetra convallis posuere morbi. Est placerat in egestas erat imperdiet sed. Sed sed risus pretium quam vulputate. Curabitur vitae nunc sed velit dignissim sodales. Leo in vitae turpis massa sed elementum tempus. Arcu non sodales neque sodales ut etiam. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus.
                   </Paragraph>
@@ -89,13 +89,21 @@ function LandingPage(props) {
               </Col>
               <Col span={12}>
                 <div style={{textAlign: 'center'}}>
-                  <Title level={2}>What's NTNFT</Title>
-                  <Paragraph style={{ padding: '20px 40px'}}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum fusce ut placerat orci nulla pellentesque. Ac turpis egestas sed tempus urna et pharetra pharetra. Sed blandit libero volutpat sed cras ornare arcu dui. Luctus venenatis lectus magna fringilla urna porttitor rhoncus. Donec ac odio tempor orci. Lacus viverra vitae congue eu. Ut enim blandit volutpat maecenas volutpat blandit. Maecenas pharetra convallis posuere morbi. Est placerat in egestas erat imperdiet sed. Sed sed risus pretium quam vulputate. Curabitur vitae nunc sed velit dignissim sodales. Leo in vitae turpis massa sed elementum tempus. Arcu non sodales neque sodales ut etiam. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus.
+                  <Title level={2}>Proof of doing something</Title>
+                  <Paragraph style={{ padding: '10px 40px'}}>
+                  Depending on different wallet interactions, the users will have the opportunity to unlock an entire catalogue of achievements, neatly represented by NFTs (TBA) and non-transferable NFTs (or simply badges).  
+                  </Paragraph>
+                  <Paragraph style={{ padding: '10px 40px'}}>
+                  NTNFT - would be tied to your wallet forever and verify your interactions with, and accomplishments in the DeFi space. In the future, this can easily be used as social proof, id or gravatar of an ethereum user.
+                  </Paragraph>
+                  <Paragraph style={{ padding: '10px 40px'}}>
+                  NFT - depending on the achievement’s rarity, certain tokens can gain collector’s value among ethereum enthusiasts and DeFi wonks.
+
                   </Paragraph>
                 </div>
               </Col>
             </Row>
+            <Divider />
             <Row>
               <Col span={24}
                 style={{ 
